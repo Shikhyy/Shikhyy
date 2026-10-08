@@ -1,0 +1,18 @@
+{
+  "github_username": "Shikhyy",
+  "display_name": "Shikhyy",
+  "role": "AI Product Builder · Full-Stack Developer",
+  "pitch": "Building practical AI systems, resilient fintech tools, and impact-driven platforms.",
+  "social": {
+    "github": "https://github.com/Shikhyy",
+    "dev": "https://dev.to/your-dev-username",
+    "linkedin": "https://www.linkedin.com/in/your-linkedin",
+    "x": "https://x.com/your-x-handle",
+    "youtube": "https://www.youtube.com/@your-channel",
+    "discord": "https://discord.com/users/your-user-id"
+  },
+  "dev": {
+    "username": "",
+    "enabled": false
+  }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" viewBox="0 0 1200 74" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
+  <title id="title">Social links section</title>
+  <desc id="desc">Row of social links</desc>
+  <rect width="1200" height="74" rx="14" fill="#0d112f"/><text x="26" y="46" fill="#9bb4ff" font-size="26" font-family="Segoe UI, Arial, sans-serif">Connect</text><rect x="18" y="10" width="220" height="54" fill="none" rx="12" stroke="#2a3b86"/><rect x="250" y="10" width="220" height="54" fill="none" rx="12" stroke="#2a3b86"/><rect x="482" y="10" width="220" height="54" fill="none" rx="12" stroke="#2a3b86"/><rect x="714" y="10" width="220" height="54" fill="none" rx="12" stroke="#2a3b86"/><rect x="946" y="10" width="220" height="54" fill="none" rx="12" stroke="#2a3b86"/>
+</svg>

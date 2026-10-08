@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" viewBox="0 0 1200 90" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
+  <title id="title">Latest DEV articles section</title>
+  <desc id="desc">Recent writing cards</desc>
+  <rect width="1200" height="90" fill="#0c102d" rx="16"/><text x="28" y="56" fill="#edf1ff" font-size="34" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Latest Articles</text>
+</svg>

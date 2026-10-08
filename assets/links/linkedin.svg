@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" viewBox="0 0 220 54" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
+  <title id="title">LinkedIn badge</title>
+  <desc id="desc">LinkedIn profile link badge</desc>
+  
+<rect width="220" height="54" fill="#0a66c2" rx="12"/>
+<circle cx="27" cy="27" r="12" fill="#fff2"/>
+<text x="27" y="32" text-anchor="middle" fill="#fff" font-size="14" font-family="Segoe UI, Arial, sans-serif" font-weight="700">L</text>
+<text x="48" y="33" fill="#fff" font-size="18" font-family="Segoe UI, Arial, sans-serif" font-weight="600">LinkedIn</text>
+<text x="203" y="33" text-anchor="end" fill="#dbe5ff" font-size="11" font-family="Segoe UI, Arial, sans-serif">placeholder</text>
+
+</svg>
