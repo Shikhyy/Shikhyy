@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" viewBox="0 0 1200 120" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
+  <title id="title">No DEV articles configured</title>
+  <desc id="desc">Empty state for latest articles</desc>
+  
+<rect width="1200" height="120" fill="#0a0f28" rx="16"/>
+<text x="30" y="64" fill="#dbe4ff" font-size="22" font-family="Segoe UI, Arial, sans-serif">No DEV articles configured yet. Set dev.enabled=true and dev.username in tools/profile/config.json.</text>
+
+</svg>
