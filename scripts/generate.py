@@ -433,14 +433,19 @@ def tools():
 GLYPH_S = [".####", "#....", "#....", ".###.", "....#", "....#", "####."]
 GLYPH_V = ["#...#", "#...#", "#...#", "#...#", ".#.#.", ".#.#.", "..#.."]
 
+HERO_THEMES = {
+    "light": dict(bg="#F2F0EB", line="#D9D5CC", ink="#111111", soft="#3A3833", mute="#6B6860", dim="#D4D0C6",
+                  chip="#E7E3DA", accent="#E8412C", glow=".07"),
+    "dark": dict(bg="#111214", line="#26282C", ink="#F2F0EB", soft="#C9C6BE", mute="#8E8B84", dim="#2A2C30",
+                 chip="#1B1D20", accent="#FF5A3C", glow=".11"),
+}
+
 
 def hero():
-    """Solid banner (works on any page background). A grid of squares spells SV."""
-    W, H = 900, 280
-    cell, step = 14, 20
-    cols, rows = 12, 7
-    x0, y0 = 622, (H - (rows * step - step + cell)) // 2
-    rnd = random.Random(3)
+    """Opaque banner in two themes, so it reads correctly on any page background."""
+    W, H = 900, 300
+    cell, step, cols, rows = 14, 20, 12, 7
+    x0, y0 = 626, (H - (rows * step - step + cell)) // 2 - 4
     red = set()
     for r in range(rows):
         for c in range(5):
@@ -448,35 +453,131 @@ def hero():
                 red.add((c, r))
             if GLYPH_V[r][c] == "#":
                 red.add((c + 7, r))
-    css = (
-        ":root{--bg:#111111;--line:#2A2A2A;--ink:#F2F0EB;--mute:#8E8B84;--dim:#3A3A3A;--accent:#FF5A3C}"
-        "@media (prefers-color-scheme: light){:root{--bg:#F2F0EB;--line:#D9D5CC;--ink:#111111;--mute:#6B6860;--dim:#CFCBC1;--accent:#E8412C}}"
-        f".sans{{font-family:{SANS}}}"
-        ".in{animation:in .9s cubic-bezier(.2,.8,.2,1) both}@keyframes in{from{opacity:0;transform:translateY(10px)}}"
-        ".bar{transform-box:fill-box;transform-origin:left center;animation:bar .8s cubic-bezier(.6,0,.2,1) .1s both}@keyframes bar{from{transform:scaleX(0)}}"
-        ".sq{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.2,1.4,.4,1) both}@keyframes pop{from{opacity:0;transform:scale(.2)}}"
-        ".sh{animation:sh 4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:.10}50%{opacity:.45}}"
-        "@media (prefers-reduced-motion: reduce){*{animation:none!important}}"
-    )
-    o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="t d">'
-         '<title id="t">Shikhar Verma</title><desc id="d">Shikhar Verma. Agent guardrails, payment systems and evals.</desc>'
-         f"<style>{css}</style>"
-         f'<rect x=".5" y=".5" width="{W-1}" height="{H-1}" rx="10" fill="var(--bg)" stroke="var(--line)"/>',
-         '<rect class="bar" x="56" y="64" width="40" height="5" fill="var(--accent)"/>',
-         '<text class="sans in" style="animation-delay:.2s" x="54" y="138" font-size="68" font-weight="800" letter-spacing="-2.2" fill="var(--ink)">Shikhar Verma</text>',
-         '<text class="sans in" style="animation-delay:.4s" x="56" y="181" font-size="22" font-weight="500" fill="var(--ink)">Agent guardrails, payment systems and evals.</text>',
-         '<text class="sans in" style="animation-delay:.55s" x="56" y="213" font-size="15" fill="var(--mute)">Open source in Meshery, Hermes Agent and Kestra.</text>']
-    for r in range(rows):
-        for c in range(cols):
-            x, y = x0 + c * step, y0 + r * step
-            if (c, r) in red:
-                o.append(f'<rect class="sq" style="animation-delay:{0.5 + c*0.07 + r*0.03:.2f}s" x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="var(--accent)"/>')
-            else:
-                o.append(f'<rect class="sh" style="animation-delay:{-rnd.random()*4:.2f}s;animation-duration:{3+rnd.random()*3:.1f}s" '
-                         f'x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="var(--dim)"/>')
-    o.append("</svg>\n")
-    (OUT / "hero.svg").write_text("".join(o))
-    print("hero.svg", len("".join(o)) // 1024, "KB")
+    for name, t in HERO_THEMES.items():
+        rnd = random.Random(3)
+        css = (f".sans{{font-family:{SANS}}}"
+               ".in{animation:in .9s cubic-bezier(.2,.8,.2,1) both}@keyframes in{from{opacity:0;transform:translateY(10px)}}"
+               ".sq{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.2,1.4,.4,1) both,wave 3.2s ease-in-out infinite}"
+               "@keyframes pop{from{opacity:0;transform:scale(.2)}}@keyframes wave{0%,100%{opacity:1}50%{opacity:.72}}"
+               ".sh{animation:sh 4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:.35}50%{opacity:1}}"
+               "@media (prefers-reduced-motion: reduce){*{animation:none!important}}")
+        o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="t d">'
+             '<title id="t">Shikhar Verma</title><desc id="d">Shikhar Verma. Third-year B.Tech student at NIT Tiruchirappalli working on AI evaluation, agent security and payments.</desc>'
+             f"<style>{css}</style>"
+             f'<defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="{t["accent"]}" stop-opacity="{t["glow"]}"/>'
+             f'<stop offset="1" stop-color="{t["accent"]}" stop-opacity="0"/></radialGradient></defs>'
+             f'<rect x=".5" y=".5" width="{W-1}" height="{H-1}" rx="12" fill="{t["bg"]}" stroke="{t["line"]}"/>'
+             f'<ellipse cx="740" cy="150" rx="300" ry="190" fill="url(#g)"/>']
+        # chips
+        x = 56
+        for k, label in enumerate(("AI evaluation", "Agent security", "Payments")):
+            w = len(label) * 7.3 + 30
+            o.append(f'<g class="in" style="animation-delay:{0.1+k*0.1:.1f}s"><rect x="{x}" y="42" width="{w:.0f}" height="28" rx="14" fill="{t["chip"]}" stroke="{t["line"]}"/>'
+                     f'<circle cx="{x+14}" cy="56" r="3.2" fill="{t["accent"]}"/>'
+                     f'<text class="sans" x="{x+25}" y="61" font-size="13" font-weight="500" fill="{t["soft"]}">{label}</text></g>')
+            x += w + 10
+        o.append(f'<text class="sans in" style="animation-delay:.3s" x="54" y="146" font-size="64" font-weight="700" letter-spacing="-2" fill="{t["ink"]}">Shikhar Verma</text>')
+        o.append(f'<text class="sans in" style="animation-delay:.45s" x="56" y="188" font-size="19" fill="{t["soft"]}">Third-year B.Tech student at NIT Tiruchirappalli.</text>')
+        o.append(f'<text class="sans in" style="animation-delay:.55s" x="56" y="214" font-size="19" fill="{t["soft"]}">Building AI agent guardrails, secure payments and evals.</text>')
+        o.append(f'<text class="sans in" style="animation-delay:.7s" x="56" y="258" font-size="14" fill="{t["mute"]}">@Shikhyy   /   Meshery   /   Hermes Agent   /   Kestra</text>')
+        for r in range(rows):
+            for c in range(cols):
+                gx, gy = x0 + c * step, y0 + r * step
+                if (c, r) in red:
+                    d = 0.5 + c * 0.07 + r * 0.03
+                    o.append(f'<rect class="sq" style="animation-delay:{d:.2f}s,{1.6 + c*0.12:.2f}s" x="{gx}" y="{gy}" width="{cell}" height="{cell}" rx="3" fill="{t["accent"]}"/>')
+                else:
+                    o.append(f'<rect class="sh" style="animation-delay:{-rnd.random()*4:.2f}s;animation-duration:{3+rnd.random()*3:.1f}s" '
+                             f'x="{gx}" y="{gy}" width="{cell}" height="{cell}" rx="3" fill="{t["dim"]}"/>')
+        o.append("</svg>\n")
+        (OUT / f"hero-{name}.svg").write_text("".join(o))
+    print("hero-light.svg, hero-dark.svg")
+
+
+# ---------------------------------------------------------------- stats card
+def streaks():
+    c = [n for _, _, n, _ in sorted(days, key=lambda d: (d[0], d[1]))]
+    best = run = 0
+    for v in c:
+        run = run + 1 if v > 0 else 0
+        best = max(best, run)
+    i = len(c) - 1
+    if c[i] == 0:
+        i -= 1
+    cur = 0
+    while i >= 0 and c[i] > 0:
+        cur += 1
+        i -= 1
+    return best, cur
+
+
+def stats():
+    st = json.loads((ROOT / "data/stats.json").read_text())
+    best, cur = streaks()
+    W, H = 900, 312
+    css = (".up{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}"
+           ".line{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 2.2s cubic-bezier(.5,0,.2,1) .4s both}"
+           "@keyframes draw{from{stroke-dashoffset:1}}"
+           ".area{animation:fadein 1.6s ease-out 1.2s both}@keyframes fadein{from{opacity:0}}")
+    s = [head(W, H, "GitHub in numbers",
+              f"{st['commits']:,} commits in the last year, {st['prs']} pull requests with {st['merged']} merged, "
+              f"contributions to {st['contributedTo']} projects outside my own, {st['pubRepos']} original repositories. "
+              f"Longest streak {best} days, current streak {cur} days.", css)]
+    s.append(f'<rect x="1" y="1" width="{W-2}" height="{H-2}" rx="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>')
+    s.append(f'<path d="M1 9a8 8 0 0 1 8-8h{W-18}a8 8 0 0 1 8 8v24H1z" fill="var(--accent)"/>')
+    s.append(txt(28, 25, "GITHUB IN NUMBERS", "mono", 11, "var(--paper)", 700, ls=2.4))
+    s.append(txt(872, 25, "LAST 12 MONTHS", "mono", 11, "var(--paper)", 700, anchor="end", ls=2.4))
+    since = datetime_month(st["createdAt"])
+    metrics = [
+        (f"{st['commits']:,}", "commits", "in the last 12 months"),
+        (f"{st['prs']}", "pull requests", f"{st['merged']} merged"),
+        (f"{st['contributedTo']}", "outside projects", "contributed to beyond my own repos"),
+        (f"{st['pubRepos']}", "original repositories", "not counting forks"),
+    ]
+    for i, (num, lab, sub) in enumerate(metrics):
+        x = 36 + i * 212
+        s.append(f'<g class="up" style="animation-delay:{0.1+i*0.12:.2f}s">'
+                 + txt(x, 98, num, "sans", 44, "var(--ink)", 800, ls=-1.2)
+                 + txt(x, 124, lab, "sans", 14, "var(--ink)", 600)
+                 + txt(x, 142, sub, "sans", 12, "var(--mute)") + "</g>")
+    # weekly sparkline
+    wk = [sum(d["contributionCount"] for d in w["contributionDays"]) for w in weeks]
+    mw = max(wk)
+    X0, X1, YB, YT = 36, 864, 252, 168
+    pts_ = [(X0 + (X1 - X0) * i / (len(wk) - 1), YB - (YB - YT) * math.sqrt(v / mw)) for i, v in enumerate(wk)]
+    d_line = "M" + "L".join(f"{x:.1f} {y:.1f}" for x, y in pts_)
+    d_area = d_line + f"L{X1} {YB}L{X0} {YB}Z"
+    s.append(f'<path class="area" d="{d_area}" fill="var(--accent)" opacity=".16"/>')
+    s.append(f'<path class="line" pathLength="1" d="{d_line}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>')
+    s.append(f'<line x1="{X0}" y1="{YB}" x2="{X1}" y2="{YB}" stroke="var(--line)" stroke-width="1.5"/>')
+    # streak row
+    items = [(f"{best} days", "longest streak"), (f"{cur} days", "current streak"),
+             (f"{ACTIVE}", "active days of 365"), (since, "on GitHub since")]
+    for i, (a_, b_) in enumerate(items):
+        x = 36 + i * 212
+        s.append(f'<text class="sans" x="{x}" y="288" font-size="13" fill="var(--mute)">'
+                 f'<tspan font-weight="700" fill="var(--ink)">{a_}</tspan>  {b_}</text>')
+    save("stats.svg", "".join(s))
+
+
+def datetime_month(iso):
+    import datetime
+    d = datetime.date.fromisoformat(iso[:10])
+    return d.strftime("%b %Y")
+
+
+# ---------------------------------------------------------------- game data
+def game_data():
+    out = ROOT / "web/invaders"
+    out.mkdir(parents=True, exist_ok=True)
+    grid = [[0] * 7 for _ in weeks]
+    for wi, w in enumerate(weeks):
+        for d in w["contributionDays"]:
+            grid[wi][d["weekday"]] = d["contributionCount"]
+    last = weeks[-1]["contributionDays"][-1]["date"]
+    payload = {"total": TOTAL, "active": ACTIVE, "max": MX, "asOf": last, "weeks": grid}
+    (out / "data.js").write_text("window.CONTRIB=" + json.dumps(payload, separators=(",", ":")) + ";\n")
+    print("web/invaders/data.js", len(weeks), "weeks")
 
 
 if __name__ == "__main__":
@@ -485,3 +586,5 @@ if __name__ == "__main__":
     invaders()
     stack()
     hero()
+    stats()
+    game_data()
