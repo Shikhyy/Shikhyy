@@ -437,7 +437,7 @@ GLYPHS = {
     "K": ["#...#", "#..#.", "#.#..", "##...", "#.#..", "#..#.", "#...#"],
     "Y": ["#...#", "#...#", ".#.#.", "..#..", "..#..", "..#..", "..#.."],
 }
-HERO_WORD = ("SHIK", "HYY")
+HERO_WORD = ("SHIKHYY",)
 
 HERO_THEMES = {
     "light": dict(bg="#F2F0EB", line="#D9D5CC", ink="#111111", soft="#3A3833", mute="#6B6860", dim="#E0DCD2",
@@ -449,16 +449,16 @@ HERO_THEMES = {
 
 def hero():
     """Opaque banner in two themes, so it reads correctly on any page background."""
-    W, H = 900, 260
-    cell, step, cols, rows = 8, 11, 23, 15
-    x0, y0 = 612, (H - (rows * step - step + cell)) // 2
+    W, H = 900, 324
+    cell, step, cols, rows = 13, 16.5, 47, 7
+    x0, y0 = 62, 30
     red = set()
     for line_no, word in enumerate(HERO_WORD):
         for li, ch in enumerate(word):
             for r in range(7):
                 for c in range(5):
                     if GLYPHS[ch][r][c] == "#":
-                        red.add((li * 6 + c, line_no * 8 + r))
+                        red.add((li * 7 + c, line_no * 8 + r))
     for name, t in HERO_THEMES.items():
         rnd = random.Random(3)
         css = (f".sans{{font-family:{SANS}}}"
@@ -466,7 +466,7 @@ def hero():
                ".bar{transform-box:fill-box;transform-origin:left center;animation:bar .8s cubic-bezier(.6,0,.2,1) .1s both}@keyframes bar{from{transform:scaleX(0)}}"
                ".sq{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.2,1.4,.4,1) both,wave 3.2s ease-in-out infinite}"
                "@keyframes pop{from{opacity:0;transform:scale(.2)}}@keyframes wave{0%,100%{opacity:1}50%{opacity:.72}}"
-               ".sh{animation:sh 4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:.3}50%{opacity:.8}}"
+               ".sh{animation:sh 4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:.18}50%{opacity:.55}}"
                "@media (prefers-reduced-motion: reduce){*{animation:none!important}}")
         o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="t d">'
              '<title id="t">Shikhar Verma</title><desc id="d">Shikhar Verma, Shikhyy on GitHub. Third-year B.Tech student at NIT Tiruchirappalli building AI agent guardrails, secure payments and evals.</desc>'
@@ -474,20 +474,20 @@ def hero():
              f'<defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="{t["accent"]}" stop-opacity="{t["glow"]}"/>'
              f'<stop offset="1" stop-color="{t["accent"]}" stop-opacity="0"/></radialGradient></defs>'
              f'<rect x=".5" y=".5" width="{W-1}" height="{H-1}" rx="12" fill="{t["bg"]}" stroke="{t["line"]}"/>'
-             f'<ellipse cx="740" cy="{H//2}" rx="300" ry="170" fill="url(#g)"/>',
-             f'<rect class="bar" x="56" y="62" width="40" height="5" fill="{t["accent"]}"/>',
-             f'<text class="sans in" style="animation-delay:.2s" x="54" y="130" font-size="64" font-weight="700" letter-spacing="-2" fill="{t["ink"]}">Shikhar Verma</text>',
-             f'<text class="sans in" style="animation-delay:.4s" x="56" y="172" font-size="19" fill="{t["soft"]}">Third-year B.Tech student at NIT Tiruchirappalli.</text>',
-             f'<text class="sans in" style="animation-delay:.5s" x="56" y="198" font-size="19" fill="{t["soft"]}">Building AI agent guardrails, secure payments and evals.</text>']
+             f'<ellipse cx="450" cy="92" rx="430" ry="130" fill="url(#g)"/>',
+             f'<rect class="bar" x="62" y="166" width="40" height="5" fill="{t["accent"]}"/>',
+             f'<text class="sans in" style="animation-delay:.2s" x="60" y="232" font-size="64" font-weight="700" letter-spacing="-2" fill="{t["ink"]}">Shikhar Verma</text>',
+             f'<text class="sans in" style="animation-delay:.4s" x="62" y="270" font-size="19" fill="{t["soft"]}">Third-year B.Tech student at NIT Tiruchirappalli.</text>',
+             f'<text class="sans in" style="animation-delay:.5s" x="62" y="296" font-size="19" fill="{t["soft"]}">Building AI agent guardrails, secure payments and evals.</text>']
         for r in range(rows):
             for c in range(cols):
                 gx, gy = x0 + c * step, y0 + r * step
                 if (c, r) in red:
-                    d = 0.5 + c * 0.05 + r * 0.02
-                    o.append(f'<rect class="sq" style="animation-delay:{d:.2f}s,{1.6 + c*0.09:.2f}s" x="{gx}" y="{gy}" width="{cell}" height="{cell}" rx="2" fill="{t["accent"]}"/>')
+                    d = 0.5 + c * 0.03 + r * 0.02
+                    o.append(f'<rect class="sq" style="animation-delay:{d:.2f}s,{1.6 + c*0.05:.2f}s" x="{gx}" y="{gy}" width="{cell}" height="{cell}" rx="3" fill="{t["accent"]}"/>')
                 else:
                     o.append(f'<rect class="sh" style="animation-delay:{-rnd.random()*4:.2f}s;animation-duration:{3+rnd.random()*3:.1f}s" '
-                             f'x="{gx}" y="{gy}" width="{cell}" height="{cell}" rx="2" fill="{t["dim"]}"/>')
+                             f'x="{gx}" y="{gy}" width="{cell}" height="{cell}" rx="3" fill="{t["dim"]}"/>')
         o.append("</svg>\n")
         (OUT / f"hero-{name}.svg").write_text("".join(o))
     print("hero-light.svg, hero-dark.svg")
@@ -611,6 +611,43 @@ def results():
 
 
 
+# ---------------------------------------------------------------- resilientpay results
+def resilient():
+    tiles = [
+        ("98.5%", "NFC success", ["19.7 ms, 1,000 transactions", "across 5 channels"]),
+        ("93.0%", "SMS fallback delivery", ["over degraded cellular links"]),
+        ("62.3%", "smaller payloads", ["106 B against 281 B for JSON,", "SMS segments cut from 4 to 2"]),
+        ("0", "false acceptances", ["2,000 fault-injected transactions,", "100% convergence"]),
+        ("0 paise", "undetected exposure", ["900 double-spend and replay trials,", "caught by the second transaction"]),
+        ("3.2x / 7.2x", "hash chain vs Merkle audit", ["faster writes, faster", "verification"]),
+    ]
+    W, H = 900, 352
+    css = ".up{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}"
+    s = [head(W, H, "ResilientPay: what the simulator measured",
+              "Six results from ResilientPay's deterministic simulation: 98.5 percent NFC success, 93.0 percent SMS fallback delivery, "
+              "62.3 percent smaller payloads, zero false acceptances across 2,000 fault-injected transactions, zero paise of undetected "
+              "exposure across 900 double-spend trials, and a hash-chain audit log 3.2 times faster on writes and 7.2 times faster to verify.", css)]
+    s.append(f'<rect x="1" y="1" width="{W-2}" height="{H-2}" rx="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>')
+    s.append(f'<path d="M1 9a8 8 0 0 1 8-8h{W-18}a8 8 0 0 1 8 8v24H1z" fill="var(--accent)"/>')
+    s.append(txt(28, 25, "RESILIENTPAY  /  WHAT THE SIMULATOR MEASURED", "mono", 11, "var(--paper)", 700, ls=2.4))
+    tw, th, gap = 268, 122, 12
+    for i, (num, lab, sub) in enumerate(tiles):
+        x = 36 + (i % 3) * (tw + gap)
+        y = 56 + (i // 3) * (th + gap)
+        col = "var(--accent)" if i in (3, 4) else "var(--ink)"
+        g = [f'<g class="up" style="animation-delay:{i*0.09:.2f}s">',
+             f'<rect x="{x}" y="{y}" width="{tw}" height="{th}" rx="6" fill="var(--bg)" stroke="var(--line)" stroke-width="1.5"/>',
+             txt(x + 20, y + 52, num, "sans", 38, col, 800, ls=-1),
+             txt(x + 20, y + 78, lab, "sans", 14, "var(--ink)", 600)]
+        for k, line in enumerate(sub):
+            g.append(txt(x + 20, y + 98 + k * 15, line, "sans", 12, "var(--mute)"))
+        g.append("</g>")
+        s.append("".join(g))
+    s.append(txt(36, 338, "Deterministic simulation with test identities and simulated value. Not real payments.", "sans", 12, "var(--mute)"))
+    save("resilientpay.svg", "".join(s))
+
+
+
 if __name__ == "__main__":
     tape()
     city()
@@ -619,4 +656,5 @@ if __name__ == "__main__":
     hero()
     stats()
     results()
+    resilient()
     game_data()

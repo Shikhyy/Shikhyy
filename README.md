@@ -101,36 +101,17 @@ One detail I like: the recipient check runs *before* the budget check, so a prom
 
 ### ResilientPay: payments that survive losing the network
 
-<table>
-<tr>
-<td width="54%" valign="top">
-
 UPI-scale payments assume a live connection between payer, banks and the network. In a subway, a rural area or an outage, they simply fail. ResilientPay asks what can be done safely **offline**, and its answer is to bound the risk instead of pretending a disconnected system has consensus.
 
 A payer's phone carries a pre-authorised **offline credential** with a finite budget, a short life and monotonic counters. Each payment is a 106-byte canonical CBOR envelope signed with Ed25519, handed over device to device by NFC, with SMS as the fallback. When either side reconnects, a deterministic reconciliation engine settles it and flags any conflict.
 
 The repo is built spec-first: requirements, a threat model, a trust model, a double-spend model, protocol and state-machine specs, a deterministic simulator and a paper manuscript, all before the apps. It is a research prototype with test identities and simulated value, and it says plainly that it is not meant to replace UPI.
 
+<div align="center">
+<img src="assets/resilientpay.svg" alt="ResilientPay simulator results: 98.5% NFC success, 93.0% SMS fallback delivery, 62.3% smaller payloads, 0 false acceptances across 2,000 fault-injected transactions, 0 paise of undetected exposure across 900 double-spend trials, and a hash-chain audit log 3.2x faster on writes and 7.2x faster to verify." width="100%">
+</div>
+
 `Rust` `Go` `Kotlin` `TypeScript` &nbsp;|&nbsp; [Repo](https://github.com/Shikhyy/ResilientPay) &nbsp;|&nbsp; [Paper](https://github.com/Shikhyy/ResilientPay/blob/main/docs/01-research/23_PAPER.md) &nbsp;|&nbsp; [Android app](https://github.com/Shikhyy/resilientpay-android)
-
-</td>
-<td width="46%" valign="top">
-
-**What the simulator measured**
-
-| | Result |
-| :-- | :-- |
-| **Transport** | 98.5% NFC success, 93.0% SMS fallback delivery |
-| **Encoding** | 62.3% smaller than compact JSON, SMS segments cut from 4 to 2 |
-| **Reconciliation** | 2,000 fault-injected transactions, 100% convergence, 0 false acceptances |
-| **Double-spend** | 900 attack trials, 0 paise of undetected exposure, conflict caught by the second transaction |
-| **Audit log** | Hash chain beat a Merkle design by 3.2x on writes and 7.2x on verification |
-
-<sub>Deterministic simulation, not real payments.</sub>
-
-</td>
-</tr>
-</table>
 
 ### OrderBook-DST: can a model write exchange code that stays correct?
 
