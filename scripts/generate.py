@@ -430,11 +430,17 @@ def tools():
 
 
 # ---------------------------------------------------------------- hero
-GLYPH_S = [".####", "#....", "#....", ".###.", "....#", "....#", "####."]
-GLYPH_V = ["#...#", "#...#", "#...#", "#...#", ".#.#.", ".#.#.", "..#.."]
+GLYPHS = {
+    "S": [".####", "#....", "#....", ".###.", "....#", "....#", "####."],
+    "H": ["#...#", "#...#", "#...#", "#####", "#...#", "#...#", "#...#"],
+    "I": ["#####", "..#..", "..#..", "..#..", "..#..", "..#..", "#####"],
+    "K": ["#...#", "#..#.", "#.#..", "##...", "#.#..", "#..#.", "#...#"],
+    "Y": ["#...#", "#...#", ".#.#.", "..#..", "..#..", "..#..", "..#.."],
+}
+HERO_WORD = ("SHIK", "HYY")
 
 HERO_THEMES = {
-    "light": dict(bg="#F2F0EB", line="#D9D5CC", ink="#111111", soft="#3A3833", mute="#6B6860", dim="#D4D0C6",
+    "light": dict(bg="#F2F0EB", line="#D9D5CC", ink="#111111", soft="#3A3833", mute="#6B6860", dim="#E0DCD2",
                   chip="#E7E3DA", accent="#E8412C", glow=".07"),
     "dark": dict(bg="#111214", line="#26282C", ink="#F2F0EB", soft="#C9C6BE", mute="#8E8B84", dim="#2A2C30",
                  chip="#1B1D20", accent="#FF5A3C", glow=".11"),
@@ -444,25 +450,25 @@ HERO_THEMES = {
 def hero():
     """Opaque banner in two themes, so it reads correctly on any page background."""
     W, H = 900, 300
-    cell, step, cols, rows = 14, 20, 12, 7
-    x0, y0 = 626, (H - (rows * step - step + cell)) // 2 - 4
+    cell, step, cols, rows = 8, 11, 23, 15
+    x0, y0 = 612, (H - (rows * step - step + cell)) // 2
     red = set()
-    for r in range(rows):
-        for c in range(5):
-            if GLYPH_S[r][c] == "#":
-                red.add((c, r))
-            if GLYPH_V[r][c] == "#":
-                red.add((c + 7, r))
+    for line_no, word in enumerate(HERO_WORD):
+        for li, ch in enumerate(word):
+            for r in range(7):
+                for c in range(5):
+                    if GLYPHS[ch][r][c] == "#":
+                        red.add((li * 6 + c, line_no * 8 + r))
     for name, t in HERO_THEMES.items():
         rnd = random.Random(3)
         css = (f".sans{{font-family:{SANS}}}"
                ".in{animation:in .9s cubic-bezier(.2,.8,.2,1) both}@keyframes in{from{opacity:0;transform:translateY(10px)}}"
                ".sq{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.2,1.4,.4,1) both,wave 3.2s ease-in-out infinite}"
                "@keyframes pop{from{opacity:0;transform:scale(.2)}}@keyframes wave{0%,100%{opacity:1}50%{opacity:.72}}"
-               ".sh{animation:sh 4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:.35}50%{opacity:1}}"
+               ".sh{animation:sh 4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:.3}50%{opacity:.8}}"
                "@media (prefers-reduced-motion: reduce){*{animation:none!important}}")
         o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="t d">'
-             '<title id="t">Shikhar Verma</title><desc id="d">Shikhar Verma. Third-year B.Tech student at NIT Tiruchirappalli working on AI evaluation, agent security and payments.</desc>'
+             '<title id="t">Shikhar Verma</title><desc id="d">Shikhar Verma, Shikhyy on GitHub. Third-year B.Tech student at NIT Tiruchirappalli building AI agent guardrails, secure payments and evals.</desc>'
              f"<style>{css}</style>"
              f'<defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="{t["accent"]}" stop-opacity="{t["glow"]}"/>'
              f'<stop offset="1" stop-color="{t["accent"]}" stop-opacity="0"/></radialGradient></defs>'
@@ -484,11 +490,11 @@ def hero():
             for c in range(cols):
                 gx, gy = x0 + c * step, y0 + r * step
                 if (c, r) in red:
-                    d = 0.5 + c * 0.07 + r * 0.03
-                    o.append(f'<rect class="sq" style="animation-delay:{d:.2f}s,{1.6 + c*0.12:.2f}s" x="{gx}" y="{gy}" width="{cell}" height="{cell}" rx="3" fill="{t["accent"]}"/>')
+                    d = 0.5 + c * 0.05 + r * 0.02
+                    o.append(f'<rect class="sq" style="animation-delay:{d:.2f}s,{1.6 + c*0.09:.2f}s" x="{gx}" y="{gy}" width="{cell}" height="{cell}" rx="2" fill="{t["accent"]}"/>')
                 else:
                     o.append(f'<rect class="sh" style="animation-delay:{-rnd.random()*4:.2f}s;animation-duration:{3+rnd.random()*3:.1f}s" '
-                             f'x="{gx}" y="{gy}" width="{cell}" height="{cell}" rx="3" fill="{t["dim"]}"/>')
+                             f'x="{gx}" y="{gy}" width="{cell}" height="{cell}" rx="2" fill="{t["dim"]}"/>')
         o.append("</svg>\n")
         (OUT / f"hero-{name}.svg").write_text("".join(o))
     print("hero-light.svg, hero-dark.svg")
@@ -580,6 +586,38 @@ def game_data():
     print("web/invaders/data.js", len(weeks), "weeks")
 
 
+# ---------------------------------------------------------------- orderbook results
+def results():
+    rows = [("nemotron_ultra", 100.0, False), ("mistral_large", 93.9, False), ("gemini_35_flash", 87.5, True),
+            ("gemma_26b", 81.8, False), ("flash_lite", 78.8, False), ("nemotron_nano", 36.4, False), ("ministral_8b", 36.4, False)]
+    W, H = 900, 330
+    css = (".bar{transform-box:fill-box;transform-origin:left center;animation:grow 1.1s cubic-bezier(.2,.7,.2,1) both}"
+           ".row{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}")
+    s = [head(W, H, "OrderBook-DST pass rates",
+              "Pass rate on the 11 implementation tasks for seven free-tier models: nemotron_ultra 100%, mistral_large 93.9%, "
+              "gemini_35_flash 87.5% (incomplete), gemma_26b 81.8%, flash_lite 78.8%, nemotron_nano 36.4%, ministral_8b 36.4%.", css)]
+    s.append(f'<rect x="1" y="1" width="{W-2}" height="{H-2}" rx="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>')
+    s.append(f'<path d="M1 9a8 8 0 0 1 8-8h{W-18}a8 8 0 0 1 8 8v24H1z" fill="var(--accent)"/>')
+    s.append(txt(28, 25, "ORDERBOOK-DST  /  PASS RATE ON THE 11 IMPLEMENTATION TASKS", "mono", 11, "var(--paper)", 700, ls=2.4))
+    X0, TRACK = 190, 560
+    for i, (name, pct, inc) in enumerate(rows):
+        y = 62 + i * 34
+        w = TRACK * pct / 100
+        col = "var(--accent)" if pct >= 78 else "var(--brass)"
+        s.append(f'<g class="row" style="animation-delay:{i*0.08:.2f}s">'
+                 + txt(28, y + 14, name, "sans", 14, "var(--ink)", 600)
+                 + f'<rect x="{X0}" y="{y}" width="{TRACK}" height="20" rx="4" fill="var(--dim)" opacity=".55"/></g>')
+        if inc:
+            s.append(f'<rect class="bar" style="animation-delay:{i*0.08+0.2:.2f}s" x="{X0}" y="{y}" width="{w:.0f}" height="20" rx="4" fill="none" stroke="{col}" stroke-width="2" stroke-dasharray="5 4"/>')
+        else:
+            s.append(f'<rect class="bar" style="animation-delay:{i*0.08+0.2:.2f}s" x="{X0}" y="{y}" width="{w:.0f}" height="20" rx="4" fill="{col}"/>')
+        label = f"{pct:.1f}%" + ("  incomplete" if inc else "")
+        s.append(txt(X0 + TRACK + 16, y + 15, label, "mono", 13, "var(--ink)", 700))
+    s.append(txt(28, 316, "329 real trials, 7 free-tier models, 3 trials per task. Pass means every hidden check and all 20 seeded 200-event simulations. Dashed: rate-limited, incomplete.", "sans", 11.5, "var(--mute)"))
+    save("results.svg", "".join(s))
+
+
+
 if __name__ == "__main__":
     tape()
     city()
@@ -587,4 +625,5 @@ if __name__ == "__main__":
     stack()
     hero()
     stats()
+    results()
     game_data()

@@ -1,63 +1,138 @@
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-  <img src="assets/hero-light.svg" alt="Shikhar Verma. Third-year B.Tech student at NIT Tiruchirappalli, building AI agent guardrails, secure payments and evals." width="100%">
+  <img src="assets/hero-light.svg" alt="Shikhar Verma, Shikhyy on GitHub. Building AI agent guardrails, secure payments and evals." width="100%">
 </picture>
 </div>
 
 <p align="center">
   <a href="#about">About</a> &nbsp;|&nbsp;
-  <a href="#education-and-experience">Experience</a> &nbsp;|&nbsp;
-  <a href="#featured-projects">Projects</a> &nbsp;|&nbsp;
+  <a href="#flagship-projects">Flagship projects</a> &nbsp;|&nbsp;
+  <a href="#more-builds">More builds</a> &nbsp;|&nbsp;
   <a href="#open-source-contributions">Open source</a> &nbsp;|&nbsp;
-  <a href="#tech-stack">Tech stack</a> &nbsp;|&nbsp;
+  <a href="#tech-stack">Stack</a> &nbsp;|&nbsp;
   <a href="#github-in-numbers">Stats</a> &nbsp;|&nbsp;
   <a href="#play">Play</a>
 </p>
 
 ## About
 
-I'm a third-year B.Tech student at NIT Tiruchirappalli, studying Production Engineering with a minor in Computer Science. My work sits across empirical AI evaluation, secure agent tooling and software assurance. I'm interested in technical AI governance: how to test advanced AI systems, and how to bound what tool-using agents are allowed to do.
+I build software that handles money or untrusted input, and then I try to break it. Most of my repos started as hackathon or challenge entries. The ones I keep going back to ask the same question: what should a program be allowed to do when it can't be sure who told it to?
 
-I build prototypes of those ideas in public. **Lineage** traces every payment detail back to its source before an agent pays. **Sentinyx** hunts for hidden instructions in the text an agent reads. **Enfeoff** makes sure one agent can never hand another more authority than it holds. **OrderBook-DST** is a benchmark for whether a model's code stays correct over hundreds of events, not just the tests it can see.
+In the last year that has meant over 3,400 commits and 53 original repositories, from payment agents and prompt-injection scanners to a benchmark for exchange code. A few habits show up in all of them:
+
+- **Measure instead of claiming.** OrderBook-DST has 329 real trials with confidence intervals. Lineage's attack lab runs *your* attack against the real engine.
+- **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
+- **Ship something you can click.** Many of the projects below have a live demo you can try.
 
 | | |
 | :-- | :-- |
 | **Focus** | AI evaluation, agent security, resilient payments |
-| **Studying** | B.Tech Production Engineering, minor in Computer Science, NIT Tiruchirappalli (2024 to 2028) |
+| **Studying** | Production Engineering with a minor in Computer Science, NIT Tiruchirappalli |
 | **Club** | Blockchain developer at SPIDER R&D, NIT Trichy |
 | **Open source** | 8 merged pull requests across Meshery, Hermes Agent and Kestra |
-| **Research interests** | Technical AI governance, indirect prompt injection, bounded autonomy and access control, provenance and auditing |
-| **Languages** | Python, Go, Rust, TypeScript, Solidity, Java |
 
-## Education and experience
+## Flagship projects
 
-| When | Where | What |
+### Lineage: a payment agent that can't be phished
+
+<table>
+<tr>
+<td width="54%" valign="top">
+
+Business email compromise is the biggest fraud against payables, and AI agents add a new route in: instructions hidden in invoices, chat and *persistent memory* can steer them. Most guardrails check amounts and allowlists. They don't ask where a value came from.
+
+Lineage traces every payment-critical value (payee, account, amount) back to its source, either untrusted context such as email, chat, memory and tool output, or a trusted vendor record or the owner. A guard that sits **outside the LLM** answers `ALLOW`, `ASK_OWNER` or `BLOCK`. Only the executor holds credentials, and every decision lands in a SHA-256 hash-chained audit log. A Rust signer puts the same guard in front of NEAR Intents signing.
+
+In a 17-scenario simulated benchmark it blocked **12 of 12 attacks** and completed all five benign payments. The live-LLM evaluation is still to do.
+
+**Try it:** the attack lab runs a phishing message you write twice on the real engine, once with no guard and once behind Lineage.
+
+`Go` `Rust` `TypeScript` `Next.js` &nbsp;|&nbsp; [Repo](https://github.com/Shikhyy/lineage) &nbsp;|&nbsp; [Live demo](https://lineage-beryl.vercel.app)
+
+</td>
+<td width="46%" valign="top">
+<a href="https://lineage-beryl.vercel.app"><img src="https://raw.githubusercontent.com/Shikhyy/lineage/HEAD/assets/screens/03-attack-lab.jpeg" alt="Lineage attack lab: a phishing message sent with no guard loses 1,250 dollars, and behind Lineage it is held for the owner."></a>
+</td>
+</tr>
+</table>
+
+### Sentinyx: finding the instructions hidden in onchain text
+
+<table>
+<tr>
+<td width="54%" valign="top">
+
+AI agents now read the chain: a coin's name, an NFT's description, a Basename's text records, comments in verified source. All of it is free text that anyone can write, and some of it is written for the machine. An attacker doesn't need to hack anything. They put a sentence in a token description, or hide one in invisible Unicode.
+
+Sentinyx has two jobs. It **finds** the text: a scanner reads every field an agent would read, decodes zero-width, bidirectional and Base64 payloads, and says which lines are aimed at machines. It **stops** the damage: a Go proxy for MCP and JSON-RPC marks tool output untrusted and denies or holds any transfer, install or shell command whose critical argument came from that text.
+
+There is also a nightly **Night Ledger** that scans the newest tokens on Base and publishes the results as open data (CSV, JSON, Atom), plus an API, a README badge and a CLI. The guard is honest about its limits: it matches values, so a value the model retypes differently would slip past it. Tested against mock services, and detector precision and recall are not measured yet.
+
+`TypeScript` `Go` `Next.js` `Base` `MCP` &nbsp;|&nbsp; [Repo](https://github.com/Shikhyy/sentinyx) &nbsp;|&nbsp; [Live demo](https://sentinyx.vercel.app)
+
+</td>
+<td width="46%" valign="top">
+<a href="https://sentinyx.vercel.app"><img src="https://raw.githubusercontent.com/Shikhyy/sentinyx/HEAD/docs/images/lab.png" alt="Sentinyx Attack Lab: pick an attack, choose whether the guard is on, and launch it."></a>
+</td>
+</tr>
+</table>
+
+### Enfeoff: bounded delegation for AI agents, enforced on-chain
+
+<table>
+<tr>
+<td width="54%" valign="top">
+
+An agent that can spend money will sooner or later be talked into spending it badly. Enfeoff makes the limit part of the chain instead of part of a prompt. An owner funds a vault and creates a root **mandate**. Any holder can delegate a strictly smaller one, and every spend is checked against the whole chain of ancestors.
+
+Six invariants hold on every call: a child always gets less than its parent has left, every ancestor is charged for every spend, revoking or expiring a node kills its subtree, funds only reach allowlisted wallets, receipts make an action single-use, and large spends sit in an owner **veto window** before release.
+
+One detail I like: the recipient check runs *before* the budget check, so a prompt-injected "send everything to the attacker" fails with `RecipientNotAllowed` and not a confusing budget error. 32 Anchor tests, deployed on devnet with a test token. Unaudited.
+
+`Rust` `Anchor` `Solana` `TypeScript` &nbsp;|&nbsp; [Repo](https://github.com/Shikhyy/enfeoff) &nbsp;|&nbsp; [Live demo](https://enfeoff.vercel.app)
+
+</td>
+<td width="46%" valign="top">
+<a href="https://enfeoff.vercel.app"><img src="https://raw.githubusercontent.com/Shikhyy/enfeoff/HEAD/assets/web-invariants.jpg" alt="Enfeoff site: rules the program checks on every call. A child gets less, never more."></a>
+</td>
+</tr>
+</table>
+
+### OrderBook-DST: can a model write exchange code that stays correct?
+
+Exchanges, brokers and crypto venues run matching and risk engines where a bug moves real money instantly. A reviewer reading one function will not see a rebate credited without debiting the fee vault. A conservation check over many events will. OrderBook-DST asks whether a model can write that code so it holds up over **hundreds of events**, not just the tests it can see. The tasks model failure classes behind real losses: Knight Capital in 2012, FTX and Alameda in 2022, and the LME nickel halt the same year.
+
+A model writes one handler file, and it is graded **by code, never by an LLM judge**: 20% public tests, 30% on 87 hidden checkpoints, and 50% on 20 hidden seeds of 200 events each, with invariants checked after every event (money conserved, margin locks, order ids and priority, FIX replay). The benchmark has 17 tasks in 9 families and 81 hand-written bugs the grader must catch. Reproducing it costs $0 on free tiers.
+
+<div align="center">
+<img src="assets/results.svg" alt="OrderBook-DST pass rates on the 11 implementation tasks: nemotron_ultra 100%, mistral_large 93.9%, gemini_35_flash 87.5% incomplete, gemma_26b 81.8%, flash_lite 78.8%, nemotron_nano 36.4%, ministral_8b 36.4%." width="100%">
+</div>
+
+`Python` &nbsp;|&nbsp; [Repo, results and research report](https://github.com/Shikhyy/orderbook-dst)
+
+### Cairnquill: an LLM drafts, SQL verifies
+
+An AML suspicious-transaction report copilot built on Snowflake, aimed at the problem of LLM hallucination in regulatory filings. An XGBoost detector flags accounts, immutable evidence snapshots ("cairns") are collected, and Snowflake Cortex drafts numeric claims. A deterministic SQL verifier then checks **every claim against the snapshot**. If the model invents a number, the draft is blocked. Approved filings get a SHA-256 seal. On its planted-error harness it reports a 98.5% catch rate, a 0.5% false-block rate and 420 ms average verification. Synthetic data only. 253 commits.
+
+`Snowflake` `Cortex` `FastAPI` `React` &nbsp;|&nbsp; [Repo](https://github.com/Shikhyy/cairnquill) &nbsp;|&nbsp; [Live demo](https://cairnquill.vercel.app)
+
+## More builds
+
+| Project | What it is | Built with |
 | :-- | :-- | :-- |
-| 2024 to 2028 (expected) | **NIT Tiruchirappalli** | B.Tech in Production Engineering, with a minor in Computer Science. |
-| Aug 2025 to now | **SPIDER R&D Club, NIT Trichy** | Blockchain developer. Led a 4-person team building a Solidity and Foundry marketplace, with Foundry tests and Slither static analysis in CI. Taught blockchain fundamentals to 60 first-year students and co-ran a smart-contract security CTF. |
-| Nov 2026 | **Nous Research, Hermes Agent** | Plugin author. Chronos tests candidate code fixes in isolated Git worktrees and merges only a passing one, with safeguards against worktree and symlink escapes. Listed in the official plugin catalog. |
-| Oct to Nov 2026 | **Kestra** | Open-source contributor. Built the GoodData plugin (55+ commits through maintainer review), a DuckDB data-quality blueprint and a CI fix. |
-| 2026 | **OrderBook-DST** | Independent research project and benchmark: 17 tasks, 9 families, 329 real trials across 7 models and 81 hand-written bug mutants. |
+| [**Nexus**](https://github.com/Shikhyy/Nexus) ([demo](https://nexus-delta-lemon.vercel.app)) | A human and AI co-evolution engine. It tracks market signals, finds an organisation's capability gaps in real time and deploys a fleet of agents against them, with a 3D live view. My largest repo at 363 commits. | FastAPI, WebSockets, Three.js, Groq, Supabase |
+| [**wyrmline**](https://github.com/Shikhyy/wyrmline) | An echo-sounder for open-source supply-chain risk. Every core function is a raw OpenCypher query on a graph database: multi-hop blast radius of a compromised package, CI/CD risk scoring, incident correlation, and a GitHub Actions agent that blocks risky PRs. | Python, HydraDB, React, D3 |
+| [**VitaSync**](https://github.com/Shikhyy/VitaSync) | Private, on-premise health intelligence. Patients upload records, extraction and retrieval produce grounded answers from a self-hosted Qwen model, and clinicians can query only with active patient consent, optionally pay-per-query over x402. | Qwen, vLLM, AMD GPU, Docker |
+| [**ResilientPay**](https://github.com/Shikhyy/ResilientPay) | Payments that keep working offline. Signed envelopes, bounded offline credentials and deterministic reconciliation. A hash-chain audit measured 3.2x faster writes and 7.2x faster verification than a block-based design in a synthetic benchmark. | Rust, Go, Kotlin |
+| [**RippleCI**](https://github.com/Shikhyy/RippleCI) ([demo](https://ripple-ci.vercel.app)) | Release intelligence that parses Python into an AST graph, traces a change's blast radius with Cypher, picks tests under a runtime budget, and checks the plan against synthetic mutants. | Python, FalkorDB |
+| [**GOSSIP**](https://github.com/Shikhyy/GOSSIP) ([demo](https://gossip-brown.vercel.app)) | A continuous prediction market. Instead of yes or no, you bet on an exact value on a Gaussian curve, priced by an on-chain Gaussian AMM, with AI agents trading through an MCP server. | Rust, Anchor, Solana, Next.js |
+| [**Sangam**](https://github.com/Shikhyy/sangam) ([demo](https://sangam-voice.vercel.app)) | A voice agent that talks like you. It measures how you mix Hindi and English and keeps its replies in the same mix. 96.7% token accuracy on a 398-token held-out set with synthetic labels. | TypeScript, Next.js, speech APIs |
+| [**cobot-arm**](https://github.com/Shikhyy/cobot-arm) | A PCB soldering fixture on a six-axis, seven-servo 3D-printed arm. The site renders the project's own CAD export as a working 3D model, and a browser joystick drives the real arm over Web Serial, with 38 automated checks on the wire format and control maths. | TypeScript, React Three Fiber, Arduino, Web Serial |
+| [**squadrune**](https://github.com/Shikhyy/squadrune) | Four specialist agents (security, architecture, spec compliance, test coverage) review a pull request concurrently, and a synthesis agent ranks the verdict. Work in progress. | Python, asyncio |
+| [**WIF Tape**](https://github.com/Shikhyy/wiftape) ([demo](https://wiftape.vercel.app)) | A round-based stock-token prediction game on Robinhood Chain. Chainlink settles each round, winners split the losing pool and 10% of it is burned. | Solidity, Next.js |
 
-**Recognition.** Top 100 of 1,900+ submissions at the Google Cloud Gen AI Academy APAC Hackathon with Petal, a four-agent workspace on Cloud Run. Certified: Microsoft Azure AI Cloud Developer Associate, AMD ROCm Associate, and NPTEL Ethical Hacking from IIT Kharagpur (Elite).
-
-## Featured projects
-
-| Project | Area | Description |
-| :-- | :-- | :-- |
-| [**Lineage**](https://github.com/Shikhyy/lineage) ([demo](https://lineage-beryl.vercel.app)) | Agent security | Provenance-aware payment guard with a hash-chained audit log. Blocked 12 of 12 attacks in a 17-scenario simulated benchmark. |
-| [**Sentinyx**](https://github.com/Shikhyy/sentinyx) ([demo](https://sentinyx.vercel.app)) | Agent security | Scanner for hidden instructions in on-chain text, plus a Go guard that treats tool output as untrusted and fails closed. Precision and recall not yet measured. |
-| [**Enfeoff**](https://github.com/Shikhyy/enfeoff) ([demo](https://enfeoff.vercel.app)) | Agent security | On-chain bounded delegation for AI agents on Solana. Child mandates can never exceed a parent's budget, expiry or recipient scope. 32 Anchor tests, devnet, unaudited. |
-| [**Precedent**](https://github.com/Shikhyy/precedent) | Agent security | Solidity security advice treated like case law: every claim is dated and newer rulings supersede older ones. |
-| [**ResilientPay**](https://github.com/Shikhyy/ResilientPay) | Payments | Offline-payment architecture with signed envelopes and deterministic reconciliation. The hash-chain audit measured 3.2x faster writes and 7.2x faster verification in a synthetic benchmark. |
-| [**WIF Tape**](https://github.com/Shikhyy/wiftape) ([demo](https://wiftape.vercel.app)) | Payments | A round-based stock-token prediction game on Robinhood Chain, settled by Chainlink. |
-| [**OrderBook-DST**](https://github.com/Shikhyy/orderbook-dst) | Evaluation | Benchmark for LLM-written exchange code, graded against a reference engine with hidden checkpoints and seeded simulations. |
-| [**RippleCI**](https://github.com/Shikhyy/RippleCI) ([demo](https://ripple-ci.vercel.app)) | Evaluation | Traces a change's blast radius through a code graph and picks which tests to run. |
-| [**Cairnquill**](https://github.com/Shikhyy/cairnquill) ([demo](https://cairnquill.vercel.app)) | Evaluation | AML report copilot on Snowflake. An LLM drafts claims and a SQL verifier blocks any number it cannot prove. |
-| [**Sangam**](https://github.com/Shikhyy/sangam) ([demo](https://sangam-voice.vercel.app)) | Voice | A voice agent that matches how you mix Hindi and English. 96.7% token accuracy on a 398-token held-out set with synthetic labels. |
-| [**Petal**](https://github.com/Shikhyy/Petal) | Agents | A four-agent workspace deployed on Cloud Run. Top 100 of 1,900+ in a Google Cloud hackathon. |
-| [**Scythe 3D**](https://github.com/Shikhyy/scythe) | Games | A browser multiplayer version of the board game Scythe for one to five players. |
+Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi yield pipeline with a risk-gating Guardian, [Pantheon](https://github.com/Shikhyy/Pantheon), an agent-vs-agent marketplace on 0G, [AEOspy](https://github.com/Shikhyy/AEOspy), a radar for how AI answer engines cite your brand, and [Precedent](https://github.com/Shikhyy/precedent), Solidity security advice treated like case law.
 
 ## Open source contributions
 
@@ -116,22 +191,20 @@ I build prototypes of those ideas in public. **Lineage** traces every payment de
 <img src="https://img.shields.io/badge/Rust-111111?style=flat-square&logo=rust&logoColor=white" alt="Rust">
 <img src="https://img.shields.io/badge/TypeScript-111111?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
 <img src="https://img.shields.io/badge/JavaScript-111111?style=flat-square&logo=javascript&logoColor=white" alt="JavaScript">
-<img src="https://img.shields.io/badge/Java-111111?style=flat-square&logo=openjdk&logoColor=white" alt="Java">
-<img src="https://img.shields.io/badge/C++-111111?style=flat-square&logo=cplusplus&logoColor=white" alt="C++">
 <img src="https://img.shields.io/badge/Kotlin-111111?style=flat-square&logo=kotlin&logoColor=white" alt="Kotlin">
 <img src="https://img.shields.io/badge/Solidity-111111?style=flat-square&logo=solidity&logoColor=white" alt="Solidity">
 </p>
 
 <p>
-<img src="https://img.shields.io/badge/PyTorch-111111?style=flat-square&logo=pytorch&logoColor=white" alt="PyTorch">
-<img src="https://img.shields.io/badge/FastAPI-111111?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
 <img src="https://img.shields.io/badge/Next.js-111111?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js">
+<img src="https://img.shields.io/badge/FastAPI-111111?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
+<img src="https://img.shields.io/badge/Three.js-111111?style=flat-square&logo=threedotjs&logoColor=white" alt="Three.js">
 <img src="https://img.shields.io/badge/PostgreSQL-111111?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
+<img src="https://img.shields.io/badge/Supabase-111111?style=flat-square&logo=supabase&logoColor=white" alt="Supabase">
 <img src="https://img.shields.io/badge/Redis-111111?style=flat-square&logo=redis&logoColor=white" alt="Redis">
 <img src="https://img.shields.io/badge/DuckDB-111111?style=flat-square&logo=duckdb&logoColor=white" alt="DuckDB">
 <img src="https://img.shields.io/badge/Snowflake-111111?style=flat-square&logo=snowflake&logoColor=white" alt="Snowflake">
 <img src="https://img.shields.io/badge/Docker-111111?style=flat-square&logo=docker&logoColor=white" alt="Docker">
-<img src="https://img.shields.io/badge/GitHub_Actions-111111?style=flat-square&logo=githubactions&logoColor=white" alt="GitHub Actions">
 <img src="https://img.shields.io/badge/Vercel-111111?style=flat-square&logo=vercel&logoColor=white" alt="Vercel">
 </p>
 
@@ -139,9 +212,8 @@ I build prototypes of those ideas in public. **Lineage** traces every payment de
 <img src="https://img.shields.io/badge/Solana-111111?style=flat-square&logo=solana&logoColor=white" alt="Solana">
 <img src="https://img.shields.io/badge/Chainlink-111111?style=flat-square&logo=chainlink&logoColor=white" alt="Chainlink">
 <img src="https://img.shields.io/badge/MCP-111111?style=flat-square&logoColor=white" alt="MCP">
-<img src="https://img.shields.io/badge/Foundry-111111?style=flat-square&logoColor=white" alt="Foundry">
-<img src="https://img.shields.io/badge/Slither-111111?style=flat-square&logoColor=white" alt="Slither">
 <img src="https://img.shields.io/badge/FalkorDB-111111?style=flat-square&logoColor=white" alt="FalkorDB">
+<img src="https://img.shields.io/badge/LangChain-111111?style=flat-square&logo=langchain&logoColor=white" alt="LangChain">
 </p>
 
 <img src="assets/stack.svg" alt="Primary language across 49 public repositories. TypeScript 33, Python 7, HTML 3, JavaScript 3, Kotlin 1, Rust 1, Solidity 1." width="100%">
@@ -157,7 +229,9 @@ I build prototypes of those ideas in public. **Lineage** traces every payment de
 <a href="https://github.com/Shikhyy/sangam"><img src="https://img.shields.io/badge/Gnani-Sangam-444444?style=flat-square&labelColor=111111" alt="Gnani, Sangam"></a>
 <a href="https://github.com/Shikhyy/wiftape"><img src="https://img.shields.io/badge/Robinhood_Chain-WIF_Tape-444444?style=flat-square&labelColor=111111" alt="Robinhood Chain, WIF Tape"></a>
 <a href="https://github.com/Shikhyy/enfeoff"><img src="https://img.shields.io/badge/Solana-Enfeoff-444444?style=flat-square&logo=solana&logoColor=white&labelColor=111111" alt="Solana, Enfeoff"></a>
-<a href="https://github.com/Shikhyy/Petal"><img src="https://img.shields.io/badge/Google_Cloud-Petal-444444?style=flat-square&logo=googlecloud&logoColor=white&labelColor=111111" alt="Google Cloud, Petal"></a>
+<a href="https://github.com/Shikhyy/wyrmline"><img src="https://img.shields.io/badge/HydraDB-wyrmline-444444?style=flat-square&labelColor=111111" alt="HydraDB, wyrmline"></a>
+<a href="https://github.com/Shikhyy/AEOspy"><img src="https://img.shields.io/badge/Bright_Data-AEOspy-444444?style=flat-square&labelColor=111111" alt="Bright Data, AEOspy"></a>
+<a href="https://github.com/Shikhyy/Pantheon"><img src="https://img.shields.io/badge/0G-Pantheon-444444?style=flat-square&labelColor=111111" alt="0G, Pantheon"></a>
 </p>
 </div>
 
