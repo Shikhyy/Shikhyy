@@ -99,6 +99,39 @@ One detail I like: the recipient check runs *before* the budget check, so a prom
 </tr>
 </table>
 
+### ResilientPay: payments that survive losing the network
+
+<table>
+<tr>
+<td width="54%" valign="top">
+
+UPI-scale payments assume a live connection between payer, banks and the network. In a subway, a rural area or an outage, they simply fail. ResilientPay asks what can be done safely **offline**, and its answer is to bound the risk instead of pretending a disconnected system has consensus.
+
+A payer's phone carries a pre-authorised **offline credential** with a finite budget, a short life and monotonic counters. Each payment is a 106-byte canonical CBOR envelope signed with Ed25519, handed over device to device by NFC, with SMS as the fallback. When either side reconnects, a deterministic reconciliation engine settles it and flags any conflict.
+
+The repo is built spec-first: requirements, a threat model, a trust model, a double-spend model, protocol and state-machine specs, a deterministic simulator and a paper manuscript, all before the apps. It is a research prototype with test identities and simulated value, and it says plainly that it is not meant to replace UPI.
+
+`Rust` `Go` `Kotlin` `TypeScript` &nbsp;|&nbsp; [Repo](https://github.com/Shikhyy/ResilientPay) &nbsp;|&nbsp; [Paper](https://github.com/Shikhyy/ResilientPay/blob/main/docs/01-research/23_PAPER.md) &nbsp;|&nbsp; [Android app](https://github.com/Shikhyy/resilientpay-android)
+
+</td>
+<td width="46%" valign="top">
+
+**What the simulator measured**
+
+| | Result |
+| :-- | :-- |
+| **Transport** | 98.5% NFC success, 93.0% SMS fallback delivery |
+| **Encoding** | 62.3% smaller than compact JSON, SMS segments cut from 4 to 2 |
+| **Reconciliation** | 2,000 fault-injected transactions, 100% convergence, 0 false acceptances |
+| **Double-spend** | 900 attack trials, 0 paise of undetected exposure, conflict caught by the second transaction |
+| **Audit log** | Hash chain beat a Merkle design by 3.2x on writes and 7.2x on verification |
+
+<sub>Deterministic simulation, not real payments.</sub>
+
+</td>
+</tr>
+</table>
+
 ### OrderBook-DST: can a model write exchange code that stays correct?
 
 Exchanges, brokers and crypto venues run matching and risk engines where a bug moves real money instantly. A reviewer reading one function will not see a rebate credited without debiting the fee vault. A conservation check over many events will. OrderBook-DST asks whether a model can write that code so it holds up over **hundreds of events**, not just the tests it can see. The tasks model failure classes behind real losses: Knight Capital in 2012, FTX and Alameda in 2022, and the LME nickel halt the same year.
@@ -124,7 +157,6 @@ An AML suspicious-transaction report copilot built on Snowflake, aimed at the pr
 | [**Nexus**](https://github.com/Shikhyy/Nexus) ([demo](https://nexus-delta-lemon.vercel.app)) | A human and AI co-evolution engine. It tracks market signals, finds an organisation's capability gaps in real time and deploys a fleet of agents against them, with a 3D live view. My largest repo at 363 commits. | FastAPI, WebSockets, Three.js, Groq, Supabase |
 | [**wyrmline**](https://github.com/Shikhyy/wyrmline) | An echo-sounder for open-source supply-chain risk. Every core function is a raw OpenCypher query on a graph database: multi-hop blast radius of a compromised package, CI/CD risk scoring, incident correlation, and a GitHub Actions agent that blocks risky PRs. | Python, HydraDB, React, D3 |
 | [**VitaSync**](https://github.com/Shikhyy/VitaSync) | Private, on-premise health intelligence. Patients upload records, extraction and retrieval produce grounded answers from a self-hosted Qwen model, and clinicians can query only with active patient consent, optionally pay-per-query over x402. | Qwen, vLLM, AMD GPU, Docker |
-| [**ResilientPay**](https://github.com/Shikhyy/ResilientPay) | Payments that keep working offline. Signed envelopes, bounded offline credentials and deterministic reconciliation. A hash-chain audit measured 3.2x faster writes and 7.2x faster verification than a block-based design in a synthetic benchmark. | Rust, Go, Kotlin |
 | [**RippleCI**](https://github.com/Shikhyy/RippleCI) ([demo](https://ripple-ci.vercel.app)) | Release intelligence that parses Python into an AST graph, traces a change's blast radius with Cypher, picks tests under a runtime budget, and checks the plan against synthetic mutants. | Python, FalkorDB |
 | [**GOSSIP**](https://github.com/Shikhyy/GOSSIP) ([demo](https://gossip-brown.vercel.app)) | A continuous prediction market. Instead of yes or no, you bet on an exact value on a Gaussian curve, priced by an on-chain Gaussian AMM, with AI agents trading through an MCP server. | Rust, Anchor, Solana, Next.js |
 | [**Sangam**](https://github.com/Shikhyy/sangam) ([demo](https://sangam-voice.vercel.app)) | A voice agent that talks like you. It measures how you mix Hindi and English and keeps its replies in the same mix. 96.7% token accuracy on a 398-token held-out set with synthetic labels. | TypeScript, Next.js, speech APIs |
@@ -158,6 +190,13 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 </table>
 </div>
 
+<p align="center">
+<sub>Meshery is a <a href="https://layer5.io">Layer5</a> project.</sub><br>
+<img src="https://img.shields.io/badge/Layer5-Meshery_contributor-00B39F?style=flat-square&labelColor=111111" alt="Layer5, Meshery contributor" align="middle">
+&nbsp;
+<img src="https://badges.layer5.io/assets/badges/first-design/first-design.png" width="44" alt="Layer5 Design Pioneer badge" align="middle">
+</p>
+
 <details>
 <summary>View the pull requests</summary>
 <br>
@@ -186,34 +225,34 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <div align="center">
 
 <p>
-<img src="https://img.shields.io/badge/Python-111111?style=flat-square&logo=python&logoColor=white" alt="Python">
-<img src="https://img.shields.io/badge/Go-111111?style=flat-square&logo=go&logoColor=white" alt="Go">
-<img src="https://img.shields.io/badge/Rust-111111?style=flat-square&logo=rust&logoColor=white" alt="Rust">
-<img src="https://img.shields.io/badge/TypeScript-111111?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
-<img src="https://img.shields.io/badge/JavaScript-111111?style=flat-square&logo=javascript&logoColor=white" alt="JavaScript">
-<img src="https://img.shields.io/badge/Kotlin-111111?style=flat-square&logo=kotlin&logoColor=white" alt="Kotlin">
-<img src="https://img.shields.io/badge/Solidity-111111?style=flat-square&logo=solidity&logoColor=white" alt="Solidity">
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+<img src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white" alt="Go">
+<img src="https://img.shields.io/badge/Rust-DEA584?style=flat-square&logo=rust&logoColor=black" alt="Rust">
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+<img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white" alt="Kotlin">
+<img src="https://img.shields.io/badge/Solidity-363636?style=flat-square&logo=solidity&logoColor=white" alt="Solidity">
 </p>
 
 <p>
-<img src="https://img.shields.io/badge/Next.js-111111?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js">
-<img src="https://img.shields.io/badge/FastAPI-111111?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
-<img src="https://img.shields.io/badge/Three.js-111111?style=flat-square&logo=threedotjs&logoColor=white" alt="Three.js">
-<img src="https://img.shields.io/badge/PostgreSQL-111111?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
-<img src="https://img.shields.io/badge/Supabase-111111?style=flat-square&logo=supabase&logoColor=white" alt="Supabase">
-<img src="https://img.shields.io/badge/Redis-111111?style=flat-square&logo=redis&logoColor=white" alt="Redis">
-<img src="https://img.shields.io/badge/DuckDB-111111?style=flat-square&logo=duckdb&logoColor=white" alt="DuckDB">
-<img src="https://img.shields.io/badge/Snowflake-111111?style=flat-square&logo=snowflake&logoColor=white" alt="Snowflake">
-<img src="https://img.shields.io/badge/Docker-111111?style=flat-square&logo=docker&logoColor=white" alt="Docker">
-<img src="https://img.shields.io/badge/Vercel-111111?style=flat-square&logo=vercel&logoColor=white" alt="Vercel">
+<img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js">
+<img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
+<img src="https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=threedotjs&logoColor=white" alt="Three.js">
+<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
+<img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" alt="Supabase">
+<img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white" alt="Redis">
+<img src="https://img.shields.io/badge/DuckDB-FFF000?style=flat-square&logo=duckdb&logoColor=black" alt="DuckDB">
+<img src="https://img.shields.io/badge/Snowflake-29B5E8?style=flat-square&logo=snowflake&logoColor=white" alt="Snowflake">
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker">
+<img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel">
 </p>
 
 <p>
-<img src="https://img.shields.io/badge/Solana-111111?style=flat-square&logo=solana&logoColor=white" alt="Solana">
-<img src="https://img.shields.io/badge/Chainlink-111111?style=flat-square&logo=chainlink&logoColor=white" alt="Chainlink">
-<img src="https://img.shields.io/badge/MCP-111111?style=flat-square&logoColor=white" alt="MCP">
-<img src="https://img.shields.io/badge/FalkorDB-111111?style=flat-square&logoColor=white" alt="FalkorDB">
-<img src="https://img.shields.io/badge/LangChain-111111?style=flat-square&logo=langchain&logoColor=white" alt="LangChain">
+<img src="https://img.shields.io/badge/Solana-9945FF?style=flat-square&logo=solana&logoColor=white" alt="Solana">
+<img src="https://img.shields.io/badge/Chainlink-375BD2?style=flat-square&logo=chainlink&logoColor=white" alt="Chainlink">
+<img src="https://img.shields.io/badge/MCP-3A3A3A?style=flat-square" alt="MCP">
+<img src="https://img.shields.io/badge/FalkorDB-3A3A3A?style=flat-square" alt="FalkorDB">
+<img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" alt="LangChain">
 </p>
 
 <img src="assets/stack.svg" alt="Primary language across 49 public repositories. TypeScript 33, Python 7, HTML 3, JavaScript 3, Kotlin 1, Rust 1, Solidity 1." width="100%">
@@ -224,13 +263,13 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 
 <div align="center">
 <p>
-<a href="https://github.com/Shikhyy/cairnquill"><img src="https://img.shields.io/badge/Snowflake-Cairnquill-444444?style=flat-square&logo=snowflake&logoColor=white&labelColor=111111" alt="Snowflake, Cairnquill"></a>
-<a href="https://github.com/Shikhyy/precedent"><img src="https://img.shields.io/badge/Sanity-Precedent-444444?style=flat-square&logo=sanity&logoColor=white&labelColor=111111" alt="Sanity, Precedent"></a>
+<a href="https://github.com/Shikhyy/cairnquill"><img src="https://img.shields.io/badge/Snowflake-Cairnquill-2A2A2A?style=flat-square&logo=snowflake&logoColor=white&labelColor=29B5E8" alt="Snowflake, Cairnquill"></a>
+<a href="https://github.com/Shikhyy/precedent"><img src="https://img.shields.io/badge/Sanity-Precedent-2A2A2A?style=flat-square&logo=sanity&logoColor=white&labelColor=F03E2F" alt="Sanity, Precedent"></a>
 <a href="https://github.com/Shikhyy/sangam"><img src="https://img.shields.io/badge/Gnani-Sangam-444444?style=flat-square&labelColor=111111" alt="Gnani, Sangam"></a>
 <a href="https://github.com/Shikhyy/wiftape"><img src="https://img.shields.io/badge/Robinhood_Chain-WIF_Tape-444444?style=flat-square&labelColor=111111" alt="Robinhood Chain, WIF Tape"></a>
-<a href="https://github.com/Shikhyy/enfeoff"><img src="https://img.shields.io/badge/Solana-Enfeoff-444444?style=flat-square&logo=solana&logoColor=white&labelColor=111111" alt="Solana, Enfeoff"></a>
+<a href="https://github.com/Shikhyy/enfeoff"><img src="https://img.shields.io/badge/Solana-Enfeoff-2A2A2A?style=flat-square&logo=solana&logoColor=white&labelColor=9945FF" alt="Solana, Enfeoff"></a>
 <a href="https://github.com/Shikhyy/wyrmline"><img src="https://img.shields.io/badge/HydraDB-wyrmline-444444?style=flat-square&labelColor=111111" alt="HydraDB, wyrmline"></a>
-<a href="https://github.com/Shikhyy/AEOspy"><img src="https://img.shields.io/badge/Bright_Data-AEOspy-444444?style=flat-square&labelColor=111111" alt="Bright Data, AEOspy"></a>
+<a href="https://github.com/Shikhyy/AEOspy"><img src="https://img.shields.io/badge/Bright_Data-AEOspy-2A2A2A?style=flat-square&labelColor=3D7FFC" alt="Bright Data, AEOspy"></a>
 <a href="https://github.com/Shikhyy/Pantheon"><img src="https://img.shields.io/badge/0G-Pantheon-444444?style=flat-square&labelColor=111111" alt="0G, Pantheon"></a>
 </p>
 </div>

@@ -449,7 +449,7 @@ HERO_THEMES = {
 
 def hero():
     """Opaque banner in two themes, so it reads correctly on any page background."""
-    W, H = 900, 300
+    W, H = 900, 260
     cell, step, cols, rows = 8, 11, 23, 15
     x0, y0 = 612, (H - (rows * step - step + cell)) // 2
     red = set()
@@ -463,6 +463,7 @@ def hero():
         rnd = random.Random(3)
         css = (f".sans{{font-family:{SANS}}}"
                ".in{animation:in .9s cubic-bezier(.2,.8,.2,1) both}@keyframes in{from{opacity:0;transform:translateY(10px)}}"
+               ".bar{transform-box:fill-box;transform-origin:left center;animation:bar .8s cubic-bezier(.6,0,.2,1) .1s both}@keyframes bar{from{transform:scaleX(0)}}"
                ".sq{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.2,1.4,.4,1) both,wave 3.2s ease-in-out infinite}"
                "@keyframes pop{from{opacity:0;transform:scale(.2)}}@keyframes wave{0%,100%{opacity:1}50%{opacity:.72}}"
                ".sh{animation:sh 4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:.3}50%{opacity:.8}}"
@@ -473,19 +474,11 @@ def hero():
              f'<defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="{t["accent"]}" stop-opacity="{t["glow"]}"/>'
              f'<stop offset="1" stop-color="{t["accent"]}" stop-opacity="0"/></radialGradient></defs>'
              f'<rect x=".5" y=".5" width="{W-1}" height="{H-1}" rx="12" fill="{t["bg"]}" stroke="{t["line"]}"/>'
-             f'<ellipse cx="740" cy="150" rx="300" ry="190" fill="url(#g)"/>']
-        # chips
-        x = 56
-        for k, label in enumerate(("AI evaluation", "Agent security", "Payments")):
-            w = len(label) * 7.3 + 30
-            o.append(f'<g class="in" style="animation-delay:{0.1+k*0.1:.1f}s"><rect x="{x}" y="42" width="{w:.0f}" height="28" rx="14" fill="{t["chip"]}" stroke="{t["line"]}"/>'
-                     f'<circle cx="{x+14}" cy="56" r="3.2" fill="{t["accent"]}"/>'
-                     f'<text class="sans" x="{x+25}" y="61" font-size="13" font-weight="500" fill="{t["soft"]}">{label}</text></g>')
-            x += w + 10
-        o.append(f'<text class="sans in" style="animation-delay:.3s" x="54" y="146" font-size="64" font-weight="700" letter-spacing="-2" fill="{t["ink"]}">Shikhar Verma</text>')
-        o.append(f'<text class="sans in" style="animation-delay:.45s" x="56" y="188" font-size="19" fill="{t["soft"]}">Third-year B.Tech student at NIT Tiruchirappalli.</text>')
-        o.append(f'<text class="sans in" style="animation-delay:.55s" x="56" y="214" font-size="19" fill="{t["soft"]}">Building AI agent guardrails, secure payments and evals.</text>')
-        o.append(f'<text class="sans in" style="animation-delay:.7s" x="56" y="258" font-size="14" fill="{t["mute"]}">@Shikhyy   /   Meshery   /   Hermes Agent   /   Kestra</text>')
+             f'<ellipse cx="740" cy="{H//2}" rx="300" ry="170" fill="url(#g)"/>',
+             f'<rect class="bar" x="56" y="62" width="40" height="5" fill="{t["accent"]}"/>',
+             f'<text class="sans in" style="animation-delay:.2s" x="54" y="130" font-size="64" font-weight="700" letter-spacing="-2" fill="{t["ink"]}">Shikhar Verma</text>',
+             f'<text class="sans in" style="animation-delay:.4s" x="56" y="172" font-size="19" fill="{t["soft"]}">Third-year B.Tech student at NIT Tiruchirappalli.</text>',
+             f'<text class="sans in" style="animation-delay:.5s" x="56" y="198" font-size="19" fill="{t["soft"]}">Building AI agent guardrails, secure payments and evals.</text>']
         for r in range(rows):
             for c in range(cols):
                 gx, gy = x0 + c * step, y0 + r * step
