@@ -14,13 +14,13 @@ import re
 import subprocess
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from projects import LABELS, SPOTLIGHT  # noqa: E402
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 USER = "Shikhyy"
 
-# friendly names for organisations whose login is not how I'd write them
-LABELS = {"meshery": "Meshery", "NousResearch": "Hermes Agent", "kestra-io": "Kestra",
-          "x402-foundation": "x402", "blowhorn-ai": "Blowhorn"}
 MAX_LOGOS = 6
 
 
@@ -115,8 +115,44 @@ def fetch_oss():
     return out
 
 
+def fetch_week():
+    """Commits, repositories and pull requests over the last seven days."""
+    now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
+    start = now - datetime.timedelta(days=7)
+    iso = lambda d: d.isoformat().replace("+00:00", "Z")
+    q = ('{user(login:"%s"){contributionsCollection(from:"%s",to:"%s"){totalCommitContributions totalPullRequestContributions '
+         'totalRepositoriesWithContributedCommits commitContributionsByRepository(maxRepositories:10){repository{nameWithOwner} '
+         'contributions{totalCount}}}}}') % (USER, iso(start), iso(now))
+    cc = graphql(q)["user"]["contributionsCollection"]
+    top = sorted(((x["repository"]["nameWithOwner"], x["contributions"]["totalCount"]) for x in cc["commitContributionsByRepository"]),
+                 key=lambda t: -t[1])
+    wk = {"commits": cc["totalCommitContributions"], "prs": cc["totalPullRequestContributions"],
+          "repos": cc["totalRepositoriesWithContributedCommits"], "top": top[:5]}
+    save("week.json", wk)
+    return wk
+
+
+def plural(n, word):
+    return f"{n} {word}" + ("" if n == 1 else "s")
+
+
+def week_text(wk):
+    if not wk["commits"] and not wk["prs"]:
+        return "a quiet one so far."
+    text = f"{plural(wk['commits'], 'commit')} across {plural(wk['repos'], 'repository').replace('repositorys', 'repositories')} and {plural(wk['prs'], 'pull request')}"
+    # skip the profile repo itself (those commits are just me editing this page) and drop my own prefix
+    top = [f"**{name.replace(USER + '/', '')}** ({n})" for name, n in wk["top"] if n and name != f"{USER}/{USER}"][:3]
+    return text + (f", mostly in {join_names(top)}." if top else ".")
+
+
+def spotlight_block():
+    today = datetime.datetime.now(datetime.timezone.utc).date()
+    name, repo, fact = SPOTLIGHT[today.toordinal() % len(SPOTLIGHT)]
+    return f"\n> **Project spotlight, changes daily:** [{name}](https://github.com/{USER}/{repo})\n> {fact}\n\n"
+
+
 # ------------------------------------------------------------------ README blocks
-def build_blocks(stats, repos, oss):
+def build_blocks(stats, repos, oss, week):
     merged = [p for p in oss if p["state"] == "merged"]
     by_owner = {}
     for p in oss:
@@ -126,7 +162,7 @@ def build_blocks(stats, repos, oss):
     # numbers used in the About text and table
     commits_floor = stats["commits"] // 100 * 100
     about = f"over {commits_floor:,} commits and {len(repos)} original repositories"
-    merged_owners = sorted({p["owner"] for p in merged}, key=lambda o: -sum(1 for p in merged if p["owner"] == o))
+    merged_owners = sorted({p["owner"] for p in merged}, key=lambda o: (-sum(1 for p in merged if p["owner"] == o), o))   # ties broken by name so reruns are identical
     row = f"{len(merged)} merged pull requests across {join_names([label(o) for o in merged_owners])}"
 
     # logo row, most recently active project first
@@ -163,7 +199,7 @@ def build_blocks(stats, repos, oss):
         groups.append("")
     details = ("\n<details>\n<summary>All pull requests by project (" + str(len(oss)) + ")</summary>\n<br>\n\n"
                + "\n".join(groups) + "\n</details>\n")
-    return {"about_numbers": about, "oss_row": row, "oss_logos": logos, "oss_prs": "\n".join(latest) + "\n" + details}
+    return {"this_week": week_text(week), "spotlight": spotlight_block(), "about_numbers": about, "oss_row": row, "oss_logos": logos, "oss_prs": "\n".join(latest) + "\n" + details}
 
 
 def fill(readme, name, content):
@@ -190,12 +226,13 @@ def main():
     stats["pubRepos"] = len(repos)          # one source of truth for the repository count
     save("stats.json", stats)
     oss = fetch_oss()
+    week = fetch_week()
     subprocess.check_call([sys.executable, str(ROOT / "scripts/generate.py")], stdout=subprocess.DEVNULL)
 
     readme_path = ROOT / "README.md"
     old = readme_path.read_text()
     new = old
-    for name, content in build_blocks(stats, repos, oss).items():
+    for name, content in build_blocks(stats, repos, oss, week).items():
         new = fill(new, name, content)
     changed = new != old or snapshot() != before
     if changed:

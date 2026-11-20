@@ -9,6 +9,10 @@ import json
 import math
 import pathlib
 import random
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from projects import LABELS  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets"
@@ -670,6 +674,79 @@ def resilient():
 
 
 
+# ---------------------------------------------------------------- open source timeline
+def oss_timeline(window=45):
+    """One row per project, one dot per day with activity (filled = merged, ring = open), over the last 45 days."""
+    import datetime
+    f = ROOT / "data/oss.json"
+    if not f.exists():
+        return
+    today = datetime.datetime.now(datetime.timezone.utc).date()
+    start = today - datetime.timedelta(days=window)
+    prs = [p for p in json.loads(f.read_text()) if start <= datetime.date.fromisoformat(p["date"]) <= today]
+    if not prs:
+        return
+    by_owner = {}
+    for p in prs:
+        by_owner.setdefault(p["owner"], []).append(p)
+    owners = sorted(by_owner, key=lambda o: max(p["date"] for p in by_owner[o]), reverse=True)[:6]
+    X0, X1, ROW, TOP = 190, 690, 46, 58
+    H = TOP + len(owners) * ROW + 62
+    W = 900
+
+    def xpos(d):
+        return X0 + (datetime.date.fromisoformat(d) - start).days / window * (X1 - X0)
+
+    css = ".dot{transform-box:fill-box;transform-origin:center;animation:pop .55s cubic-bezier(.2,1.4,.4,1) both}"
+    n_m = sum(1 for p in prs if p["state"] == "merged")
+    s = [head(W, H, "Open source timeline",
+              f"Pull requests to open source projects over the last {window} days: {n_m} merged and {len(prs) - n_m} open "
+              f"across {len(owners)} projects.", css)]
+    s.append(f'<rect x="1" y="1" width="{W-2}" height="{H-2}" rx="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>')
+    s.append(f'<path d="M1 9a8 8 0 0 1 8-8h{W-18}a8 8 0 0 1 8 8v24H1z" fill="var(--accent)"/>')
+    s.append(txt(28, 25, f"OPEN SOURCE  /  LAST {window} DAYS", "mono", 11, "var(--paper)", 700, ls=2.4))
+    s.append(txt(872, 25, f"{n_m} MERGED  /  {len(prs) - n_m} OPEN", "mono", 11, "var(--paper)", 700, anchor="end", ls=2.4))
+    axis_y = TOP + len(owners) * ROW + 10
+    # evenly spaced date ticks: start, +15 days, +30 days and today
+    for k in range(0, window + 1, 15):
+        d = start + datetime.timedelta(days=k)
+        x = xpos(d.isoformat())
+        s.append(f'<line x1="{x:.1f}" y1="{TOP-6}" x2="{x:.1f}" y2="{axis_y}" stroke="var(--dim)" stroke-width="1.2" stroke-dasharray="2 5"/>')
+        label = "TODAY" if k == window else f"{d.strftime('%b').upper()} {d.day}"
+        s.append(txt(f"{x:.1f}", axis_y + 20, label, "mono", 10.5, "var(--ink)" if k == window else "var(--mute)", 700, "middle", ls=1.6))
+    s.append(f'<line x1="{X0}" y1="{axis_y}" x2="{X1}" y2="{axis_y}" stroke="var(--line)" stroke-width="1.5"/>')
+    for i, o in enumerate(owners):
+        cy = TOP + i * ROW + ROW / 2
+        ps = by_owner[o]
+        m = sum(1 for p in ps if p["state"] == "merged")
+        op = len(ps) - m
+        s.append(txt(28, cy + 5, LABELS.get(o, o), "sans", 15, "var(--ink)", 700))
+        s.append(f'<line x1="{X0}" y1="{cy}" x2="{X1}" y2="{cy}" stroke="var(--line)" stroke-width="2" stroke-linecap="round"/>')
+        groups = {}
+        for p in ps:
+            groups.setdefault((p["date"], p["state"]), []).append(p)
+        for (date, state), items in sorted(groups.items()):
+            n = len(items)
+            x = xpos(date)
+            r = min(14, 6 + 2.2 * (n - 1) ** 0.5)
+            dy = -r * 0.6 if (state == "open" and (date, "merged") in groups) else 0
+            delay = 0.15 + (x - X0) / (X1 - X0) * 1.1
+            if state == "merged":
+                g = f'<circle class="dot" style="animation-delay:{delay:.2f}s" cx="{x:.1f}" cy="{cy+dy:.1f}" r="{r:.1f}" fill="var(--accent)"/>'
+                col = "#ffffff"
+            else:
+                g = (f'<circle class="dot" style="animation-delay:{delay:.2f}s" cx="{x:.1f}" cy="{cy+dy:.1f}" r="{r:.1f}" '
+                     f'fill="var(--panel)" stroke="var(--brass)" stroke-width="2"/>')
+                col = None
+            s.append(g)
+            if n > 1:
+                s.append(txt(f"{x:.1f}", f"{cy+dy+4:.1f}", n, "sans", 11, col or "var(--ink)", 800, "middle"))
+        sub = ", ".join(t for t in (f"{m} merged" if m else "", f"{op} open" if op else "") if t)
+        s.append(txt(872, cy + 4, sub, "mono", 11, "var(--mute)", anchor="end"))
+    save("oss.svg", "".join(s))
+
+
+
 if __name__ == "__main__":
     tape()
     city()
@@ -679,4 +756,5 @@ if __name__ == "__main__":
     stats()
     results()
     resilient()
+    oss_timeline()
     game_data()

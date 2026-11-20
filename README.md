@@ -25,12 +25,20 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
+**This week:** <!--AUTO:this_week:start-->49 commits across 6 repositories and 21 pull requests, mostly in **meshery/meshery** (33), **lineage** (6) and **x402-foundation/x402** (2).<!--AUTO:this_week:end-->
+
 | | |
 | :-- | :-- |
 | **Focus** | AI evaluation, agent security, resilient payments |
 | **Studying** | Production Engineering with a minor in Computer Science, NIT Tiruchirappalli |
 | **Club** | Blockchain developer at SPIDER R&D, NIT Trichy |
 | **Open source** | <!--AUTO:oss_row:start-->18 merged pull requests across Meshery, Kestra, x402, Hermes Agent and Blowhorn<!--AUTO:oss_row:end--> |
+
+<!--AUTO:spotlight:start-->
+> **Project spotlight, changes daily:** [GOSSIP](https://github.com/Shikhyy/GOSSIP)
+> You bet on an exact value on a Gaussian curve instead of yes or no, so a four-sigma surprise can pay around 1,000x.
+
+<!--AUTO:spotlight:end-->
 
 ## Flagship projects
 
@@ -182,6 +190,10 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 </table>
 </div>
 <!--AUTO:oss_logos:end-->
+
+<div align="center">
+<img src="assets/oss.svg" alt="Open source timeline: pull requests to open source projects in recent weeks, one row per project, filled dots for merged and outlined dots for open, refreshed automatically." width="100%">
+</div>
 
 <p align="center">
 <sub>Meshery is a <a href="https://layer5.io">Layer5</a> project.</sub><br>
