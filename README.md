@@ -25,7 +25,7 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
-**This week:** <!--AUTO:this_week:start-->50 commits across 6 repositories and 21 pull requests, mostly in **meshery/meshery** (33), **lineage** (6) and **x402-foundation/x402** (2).<!--AUTO:this_week:end-->
+**This week:** <!--AUTO:this_week:start-->50 commits across 6 repositories and 25 pull requests, mostly in **meshery/meshery** (33), **lineage** (6) and **x402-foundation/x402** (2).<!--AUTO:this_week:end-->
 
 | | |
 | :-- | :-- |
@@ -161,27 +161,32 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <div align="center">
 <table>
   <tr>
-    <td align="center" width="20%">
+    <td align="center" width="16%">
       <a href="https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/x402-foundation.png?size=160" width="56" height="56" alt="x402"></a><br>
       <b>x402</b><br>
       <sub>2 merged, 2 open</sub>
     </td>
-    <td align="center" width="20%">
+    <td align="center" width="16%">
       <a href="https://github.com/meshery/meshery/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/meshery.png?size=160" width="56" height="56" alt="Meshery"></a><br>
       <b>Meshery</b><br>
       <sub>11 merged, 2 open</sub>
     </td>
-    <td align="center" width="20%">
+    <td align="center" width="16%">
+      <a href="https://github.com/keploy/keploy/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/keploy.png?size=160" width="56" height="56" alt="keploy"></a><br>
+      <b>keploy</b><br>
+      <sub>4 open</sub>
+    </td>
+    <td align="center" width="16%">
       <a href="https://github.com/blowhorn-ai/tells/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/blowhorn-ai.png?size=160" width="56" height="56" alt="Blowhorn"></a><br>
       <b>Blowhorn</b><br>
       <sub>1 merged, 1 open</sub>
     </td>
-    <td align="center" width="20%">
+    <td align="center" width="16%">
       <a href="https://github.com/NousResearch/hermes-agent/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/NousResearch.png?size=160" width="56" height="56" alt="Hermes Agent"></a><br>
       <b>Hermes Agent</b><br>
       <sub>1 merged, 3 open</sub>
     </td>
-    <td align="center" width="20%">
+    <td align="center" width="16%">
       <a href="https://github.com/kestra-io/blueprints/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/kestra-io.png?size=160" width="56" height="56" alt="Kestra"></a><br>
       <b>Kestra</b><br>
       <sub>3 merged</sub>
@@ -208,12 +213,12 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 - **Open** since Nov 20: [docs(siwx): define origin canonicalization for domain and uri checks](https://github.com/x402-foundation/x402/pull/4348) (x402)
 - **Merged** Nov 20: [feat(evm): add Circle USDC as the default stablecoin on eight networks](https://github.com/x402-foundation/x402/pull/4337) (x402)
 - **Merged** Nov 20: [fix(server): contain panics in HTTP handlers and auto-registration](https://github.com/meshery/meshery/pull/23988) (Meshery)
-- **Merged** Nov 19: [fix(python): give back the FacilitatorWeb3Signer nonce when a send fails](https://github.com/x402-foundation/x402/pull/4313) (x402)
-- **Merged** Nov 19: [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (Blowhorn)
-- **Open** since Nov 18: [\[Docs\] Condense AGENTS.md by moving worked detail into the docs it links to](https://github.com/meshery/meshery/pull/23923) (Meshery)
+- **Open** since Nov 20: [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (keploy)
+- **Open** since Nov 20: [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (keploy)
+- **Open** since Nov 20: [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (keploy)
 
 <details>
-<summary>All pull requests by project (26)</summary>
+<summary>All pull requests by project (30)</summary>
 <br>
 
 **x402**
@@ -236,6 +241,12 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 - [\[Server\]\[mesheryctl\] Fix typos in user-facing error and log messages](https://github.com/meshery/meshery/pull/23546) (meshery, merged Nov 14)
 - [\[Server\] Return 404 when deleting a performance profile that does not exist](https://github.com/meshery/meshery/pull/23544) (meshery, merged Nov 14)
 - [Introduction - Shikhar Verma](https://github.com/meshery/meshery/pull/23495) (meshery, merged Nov 13)
+
+**keploy**
+- [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (open since Nov 20)
+- [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (open since Nov 20)
+- [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (open since Nov 20)
+- [test(learn): skip the mount-table zone tests off Linux](https://github.com/keploy/keploy/pull/5321) (open since Nov 20)
 
 **Blowhorn**
 - [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (tells, merged Nov 19)

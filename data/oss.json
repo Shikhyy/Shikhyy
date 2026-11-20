@@ -24,6 +24,38 @@
   "date": "2026-11-20"
  },
  {
+  "owner": "keploy",
+  "repo": "keploy",
+  "title": "fix(import): keep the tests of Postman folders that share a name",
+  "url": "https://github.com/keploy/keploy/pull/5327",
+  "state": "open",
+  "date": "2026-11-20"
+ },
+ {
+  "owner": "keploy",
+  "repo": "keploy",
+  "title": "fix(export): list a folder's requests in a fixed order, and drop a null item",
+  "url": "https://github.com/keploy/keploy/pull/5326",
+  "state": "open",
+  "date": "2026-11-20"
+ },
+ {
+  "owner": "keploy",
+  "repo": "keploy",
+  "title": "fix(normalize): sanitize a set again when normalizing it fails",
+  "url": "https://github.com/keploy/keploy/pull/5325",
+  "state": "open",
+  "date": "2026-11-20"
+ },
+ {
+  "owner": "keploy",
+  "repo": "keploy",
+  "title": "test(learn): skip the mount-table zone tests off Linux",
+  "url": "https://github.com/keploy/keploy/pull/5321",
+  "state": "open",
+  "date": "2026-11-20"
+ },
+ {
   "owner": "x402-foundation",
   "repo": "x402",
   "title": "fix(python): give back the FacilitatorWeb3Signer nonce when a send fails",
