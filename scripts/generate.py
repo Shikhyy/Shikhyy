@@ -81,6 +81,21 @@ def save(name, body):
 
 
 # ---------------------------------------------------------------- tape
+def load_live_repos():
+    """Most recently pushed public repos, written by scripts/update.py. Empty list if not available."""
+    f = ROOT / "data/repos_live.json"
+    return json.loads(f.read_text()) if f.exists() else []
+
+
+def short_date(iso):
+    import datetime
+    d = datetime.date.fromisoformat(iso[:10])
+    return f"{d.day} {d.strftime('%b')}"
+
+
+LIVE_REPOS = load_live_repos()
+
+
 def tape():
     W, H = 900, 468
     css = (
@@ -99,7 +114,7 @@ def tape():
     s.append('<path d="M58 58a8 8 0 0 1 8-8h288a8 8 0 0 1 8 8v14H58z" fill="var(--accent)"/>')
     s.append(txt(72, 65, "SIDE A / RECENT BUILDS", "mono", 10, "var(--paper)", 700, ls=2))
     s.append(txt(74, 106, "Shikhar Verma", "sans", 22, "var(--paperink)", 800, ls=-0.4))
-    s.append(txt(74, 126, "Recent builds, 2026", "sans", 13, "#5E5B54"))
+    s.append(txt(74, 126, f"Recent builds, {LIVE_REPOS[0]['pushed'][:4] if LIVE_REPOS else 2026}", "sans", 13, "#5E5B54"))
     s.append('<circle cx="326" cy="100" r="22" fill="var(--brass)" stroke="var(--card)" stroke-width="3"/>')
     s.append(txt(326, 106, "SV", "sans", 15, "#1E1B16", 800, "middle"))
     s.append('<rect x="96" y="134" width="228" height="26" rx="13" fill="#121212"/>')
@@ -114,16 +129,16 @@ def tape():
         s.append(f'<circle cx="{x}" cy="{y}" r="3" fill="#3A3A38"/>')
     s.append('<polygon points="58,185 58,197 67,191" fill="var(--ok)"/>')
     s.append(txt(74, 196, "NOW PLAYING", "mono", 10, "var(--ok)", 700, ls=2))
-    s.append(txt(58, 224, "lineage", "sans", 17, "#F2F0EB", 800))
-    s.append(txt(362, 224, "TypeScript / Go / Rust", "mono", 10.5, "#8E8B84", anchor="end"))
+    s.append(txt(58, 224, LIVE_REPOS[0]["name"] if LIVE_REPOS else "lineage", "sans", 17, "#F2F0EB", 800))
+    s.append(txt(362, 224, " / ".join(LIVE_REPOS[0]["langs"][:3]) if LIVE_REPOS and LIVE_REPOS[0]["langs"] else "TypeScript / Go / Rust", "mono", 10.5, "#8E8B84", anchor="end"))
     s.append('<rect x="58" y="236" width="304" height="4" rx="2" fill="#3A3A38"/>')
     s.append('<rect class="prog" x="58" y="236" width="172" height="4" rx="2" fill="var(--accent)"/>')
 
     # tracklist
-    tracks = [("lineage", "TypeScript", "13 Nov"), ("wiftape", "TypeScript", "11 Nov"),
-              ("sangam", "TypeScript", "8 Nov"), ("enfeoff", "TypeScript", "7 Nov"),
-              ("orderbook-dst", "Python", "7 Nov"), ("sentinyx", "TypeScript", "4 Nov"),
-              ("scythe", "TypeScript", "27 Oct"), ("RippleCI", "Python", "18 Oct")]
+    tracks = ([(r["name"], r["lang"] or "n/a", short_date(r["pushed"])) for r in LIVE_REPOS[:8]] if len(LIVE_REPOS) >= 8 else
+              [("lineage", "TypeScript", "13 Nov"), ("wiftape", "TypeScript", "11 Nov"), ("sangam", "TypeScript", "8 Nov"),
+               ("enfeoff", "TypeScript", "7 Nov"), ("orderbook-dst", "Python", "7 Nov"), ("sentinyx", "TypeScript", "4 Nov"),
+               ("scythe", "TypeScript", "27 Oct"), ("RippleCI", "Python", "18 Oct")])
     s.append(txt(430, 50, "TRACKLIST", "mono", 11, "var(--ok)", 700, ls=2.4))
     for i, (n, lang, dt) in enumerate(tracks):
         y = 82 + i * 27
@@ -367,10 +382,17 @@ def invaders():
 # ---------------------------------------------------------------- stack
 def stack():
     W, H = 900, 350
-    langs = [("TypeScript", "TS", 33, "var(--accent)"), ("Python", "PY", 7, "var(--brass)"),
-             ("HTML", "HT", 3, "var(--ok)"), ("JavaScript", "JS", 3, "var(--brass)"),
-             ("Kotlin", "KT", 1, "var(--accent)"), ("Rust", "RS", 1, "var(--ok)"), ("Solidity", "SO", 1, "var(--mute)")]
-    tot = sum(n for _, _, n, _ in langs)
+    codes = {"TypeScript": "TS", "Python": "PY", "JavaScript": "JS", "HTML": "HT", "Kotlin": "KT", "Rust": "RS", "Solidity": "SO",
+             "Go": "GO", "Java": "JV", "CSS": "CS", "Shell": "SH", "Move": "MV", "Vyper": "VY", "C++": "C+"}
+    palette = ["var(--accent)", "var(--brass)", "var(--ok)", "var(--brass)", "var(--accent)", "var(--ok)", "var(--mute)"]
+    if LIVE_REPOS:
+        from collections import Counter
+        counts = Counter(r["lang"] for r in LIVE_REPOS if r["lang"])
+        top = counts.most_common(7)
+    else:
+        top = [("TypeScript", 33), ("Python", 7), ("HTML", 3), ("JavaScript", 3), ("Kotlin", 1), ("Rust", 1), ("Solidity", 1)]
+    tot = sum(counts.values()) if LIVE_REPOS else sum(n for _, n in top)
+    langs = [(nm, codes.get(nm, nm[:2].upper()), n, palette[i]) for i, (nm, n) in enumerate(top)]
     css = ".blk{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.2,1.4,.4,1) both}"
     s = [head(W, H, "Genres: languages by repository",
               f"Primary language across {tot} public repositories.", css)]

@@ -1,0 +1,210 @@
+[
+ {
+  "owner": "x402-foundation",
+  "repo": "x402",
+  "title": "docs(siwx): define origin canonicalization for domain and uri checks",
+  "url": "https://github.com/x402-foundation/x402/pull/4348",
+  "state": "open",
+  "date": "2026-11-20"
+ },
+ {
+  "owner": "x402-foundation",
+  "repo": "x402",
+  "title": "feat(evm): add Circle USDC as the default stablecoin on eight networks",
+  "url": "https://github.com/x402-foundation/x402/pull/4337",
+  "state": "merged",
+  "date": "2026-11-20"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "fix(server): contain panics in HTTP handlers and auto-registration",
+  "url": "https://github.com/meshery/meshery/pull/23988",
+  "state": "merged",
+  "date": "2026-11-20"
+ },
+ {
+  "owner": "x402-foundation",
+  "repo": "x402",
+  "title": "fix(python): give back the FacilitatorWeb3Signer nonce when a send fails",
+  "url": "https://github.com/x402-foundation/x402/pull/4313",
+  "state": "merged",
+  "date": "2026-11-19"
+ },
+ {
+  "owner": "blowhorn-ai",
+  "repo": "tells",
+  "title": "fix(verdict): treat timezone aliases as the same zone",
+  "url": "https://github.com/blowhorn-ai/tells/pull/87",
+  "state": "merged",
+  "date": "2026-11-19"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "[Docs] Condense AGENTS.md by moving worked detail into the docs it links to",
+  "url": "https://github.com/meshery/meshery/pull/23923",
+  "state": "open",
+  "date": "2026-11-18"
+ },
+ {
+  "owner": "blowhorn-ai",
+  "repo": "blowhorn-site",
+  "title": "ci(security): pin remaining floating action tags to commit SHAs",
+  "url": "https://github.com/blowhorn-ai/blowhorn-site/pull/624",
+  "state": "open",
+  "date": "2026-11-18"
+ },
+ {
+  "owner": "x402-foundation",
+  "repo": "x402",
+  "title": "docs(specs): state the minimum remaining validity for exact EVM validBefore",
+  "url": "https://github.com/x402-foundation/x402/pull/4307",
+  "state": "open",
+  "date": "2026-11-17"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshkit",
+  "title": "[Kubernetes] Do not return a nil kubeconfig for an empty file",
+  "url": "https://github.com/meshery/meshkit/pull/1176",
+  "state": "merged",
+  "date": "2026-11-17"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "[mesheryctl] Show N/A for a component with no model in component list",
+  "url": "https://github.com/meshery/meshery/pull/23818",
+  "state": "merged",
+  "date": "2026-11-17"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "[mesheryctl] Report a null server version in system check instead of panicking",
+  "url": "https://github.com/meshery/meshery/pull/23817",
+  "state": "merged",
+  "date": "2026-11-17"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "[mesheryctl] Treat a null design lookup as not found in design apply",
+  "url": "https://github.com/meshery/meshery/pull/23816",
+  "state": "merged",
+  "date": "2026-11-17"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "[mesheryctl] Treat a null response as no filters in filter list",
+  "url": "https://github.com/meshery/meshery/pull/23815",
+  "state": "merged",
+  "date": "2026-11-17"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "[mesheryctl] Treat a null response as an empty page in perf profile and perf result",
+  "url": "https://github.com/meshery/meshery/pull/23814",
+  "state": "merged",
+  "date": "2026-11-17"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "fix(server): make provider package installation robust",
+  "url": "https://github.com/meshery/meshery/pull/23574",
+  "state": "open",
+  "date": "2026-11-14"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "[Server] Preserve the provider status when deleting a performance profile fails",
+  "url": "https://github.com/meshery/meshery/pull/23549",
+  "state": "merged",
+  "date": "2026-11-14"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "[Server][mesheryctl] Fix typos in user-facing error and log messages",
+  "url": "https://github.com/meshery/meshery/pull/23546",
+  "state": "merged",
+  "date": "2026-11-14"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "[Server] Return 404 when deleting a performance profile that does not exist",
+  "url": "https://github.com/meshery/meshery/pull/23544",
+  "state": "merged",
+  "date": "2026-11-14"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "Introduction - Shikhar Verma",
+  "url": "https://github.com/meshery/meshery/pull/23495",
+  "state": "merged",
+  "date": "2026-11-13"
+ },
+ {
+  "owner": "NousResearch",
+  "repo": "hermes-agent",
+  "title": "fix(desktop): recover sessions on canonical not_found",
+  "url": "https://github.com/NousResearch/hermes-agent/pull/152829",
+  "state": "open",
+  "date": "2026-11-10"
+ },
+ {
+  "owner": "NousResearch",
+  "repo": "hermes-agent",
+  "title": "fix(telegram): reject unverifiable media before unbounded download",
+  "url": "https://github.com/NousResearch/hermes-agent/pull/152811",
+  "state": "open",
+  "date": "2026-11-10"
+ },
+ {
+  "owner": "NousResearch",
+  "repo": "hermes-agent",
+  "title": "feat(catalog): add chronos speculative reasoning plugin",
+  "url": "https://github.com/NousResearch/hermes-agent/pull/150020",
+  "state": "merged",
+  "date": "2026-11-10"
+ },
+ {
+  "owner": "NousResearch",
+  "repo": "hermes-agent",
+  "title": "fix(local_runtime): defer psutil import and guard conftest process reap",
+  "url": "https://github.com/NousResearch/hermes-agent/pull/150315",
+  "state": "open",
+  "date": "2026-11-06"
+ },
+ {
+  "owner": "kestra-io",
+  "repo": "blueprints",
+  "title": "fix(ci): skip blueprint indexing when DOC_INDEXING_WEBHOOK is unset",
+  "url": "https://github.com/kestra-io/blueprints/pull/4619",
+  "state": "merged",
+  "date": "2026-11-04"
+ },
+ {
+  "owner": "kestra-io",
+  "repo": "plugin-gooddata",
+  "title": "feat(gooddata): add workspaces, dataSources, executions, layouts tasks and trigger (closes #4)",
+  "url": "https://github.com/kestra-io/plugin-gooddata/pull/5",
+  "state": "merged",
+  "date": "2026-10-21"
+ },
+ {
+  "owner": "kestra-io",
+  "repo": "blueprints",
+  "title": "feat(blueprints): add automated data quality validator with DuckDB",
+  "url": "https://github.com/kestra-io/blueprints/pull/1606",
+  "state": "merged",
+  "date": "2026-10-15"
+ }
+]

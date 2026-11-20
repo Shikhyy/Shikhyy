@@ -19,7 +19,7 @@
 
 I build software that handles money or untrusted input, and then I try to break it. Most of my repos started as hackathon or challenge entries. The ones I keep going back to ask the same question: what should a program be allowed to do when it can't be sure who told it to?
 
-In the last year that has meant over 3,400 commits and 53 original repositories, from payment agents and prompt-injection scanners to a benchmark for exchange code. A few habits show up in all of them:
+In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commits and 49 original repositories<!--AUTO:about_numbers:end-->, from payment agents and prompt-injection scanners to a benchmark for exchange code. A few habits show up in all of them:
 
 - **Measure instead of claiming.** OrderBook-DST has 329 real trials with confidence intervals. Lineage's attack lab runs *your* attack against the real engine.
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
@@ -30,7 +30,7 @@ In the last year that has meant over 3,400 commits and 53 original repositories,
 | **Focus** | AI evaluation, agent security, resilient payments |
 | **Studying** | Production Engineering with a minor in Computer Science, NIT Tiruchirappalli |
 | **Club** | Blockchain developer at SPIDER R&D, NIT Trichy |
-| **Open source** | 8 merged pull requests across Meshery, Hermes Agent and Kestra |
+| **Open source** | <!--AUTO:oss_row:start-->18 merged pull requests across Meshery, Kestra, x402, Blowhorn and Hermes Agent<!--AUTO:oss_row:end--> |
 
 ## Flagship projects
 
@@ -149,27 +149,39 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 
 ## Open source contributions
 
+<!--AUTO:oss_logos:start-->
 <div align="center">
 <table>
   <tr>
-    <td align="center" width="33%">
-      <a href="https://github.com/meshery/meshery/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/meshery.png?size=160" width="64" height="64" alt="Meshery"></a><br>
-      <b>Meshery</b><br>
-      <sub>4 merged, 1 open</sub>
+    <td align="center" width="20%">
+      <a href="https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/x402-foundation.png?size=160" width="56" height="56" alt="x402"></a><br>
+      <b>x402</b><br>
+      <sub>2 merged, 2 open</sub>
     </td>
-    <td align="center" width="33%">
-      <a href="https://github.com/NousResearch/hermes-agent/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/NousResearch.png?size=160" width="64" height="64" alt="Nous Research"></a><br>
+    <td align="center" width="20%">
+      <a href="https://github.com/meshery/meshery/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/meshery.png?size=160" width="56" height="56" alt="Meshery"></a><br>
+      <b>Meshery</b><br>
+      <sub>11 merged, 2 open</sub>
+    </td>
+    <td align="center" width="20%">
+      <a href="https://github.com/blowhorn-ai/tells/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/blowhorn-ai.png?size=160" width="56" height="56" alt="Blowhorn"></a><br>
+      <b>Blowhorn</b><br>
+      <sub>1 merged, 1 open</sub>
+    </td>
+    <td align="center" width="20%">
+      <a href="https://github.com/NousResearch/hermes-agent/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/NousResearch.png?size=160" width="56" height="56" alt="Hermes Agent"></a><br>
       <b>Hermes Agent</b><br>
       <sub>1 merged, 3 open</sub>
     </td>
-    <td align="center" width="33%">
-      <a href="https://github.com/kestra-io/blueprints/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/kestra-io.png?size=160" width="64" height="64" alt="Kestra"></a><br>
+    <td align="center" width="20%">
+      <a href="https://github.com/kestra-io/blueprints/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/kestra-io.png?size=160" width="56" height="56" alt="Kestra"></a><br>
       <b>Kestra</b><br>
       <sub>3 merged</sub>
     </td>
   </tr>
 </table>
 </div>
+<!--AUTO:oss_logos:end-->
 
 <p align="center">
 <sub>Meshery is a <a href="https://layer5.io">Layer5</a> project.</sub><br>
@@ -178,28 +190,58 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <img src="https://badges.layer5.io/assets/badges/first-design/first-design.png" width="44" alt="Layer5 Design Pioneer badge" align="middle">
 </p>
 
+<!--AUTO:oss_prs:start-->
+**Latest activity**
+
+- **Open** since Nov 20: [docs(siwx): define origin canonicalization for domain and uri checks](https://github.com/x402-foundation/x402/pull/4348) (x402)
+- **Merged** Nov 20: [feat(evm): add Circle USDC as the default stablecoin on eight networks](https://github.com/x402-foundation/x402/pull/4337) (x402)
+- **Merged** Nov 20: [fix(server): contain panics in HTTP handlers and auto-registration](https://github.com/meshery/meshery/pull/23988) (Meshery)
+- **Merged** Nov 19: [fix(python): give back the FacilitatorWeb3Signer nonce when a send fails](https://github.com/x402-foundation/x402/pull/4313) (x402)
+- **Merged** Nov 19: [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (Blowhorn)
+- **Open** since Nov 18: [\[Docs\] Condense AGENTS.md by moving worked detail into the docs it links to](https://github.com/meshery/meshery/pull/23923) (Meshery)
+
 <details>
-<summary>View the pull requests</summary>
+<summary>All pull requests by project (26)</summary>
 <br>
 
+**x402**
+- [docs(siwx): define origin canonicalization for domain and uri checks](https://github.com/x402-foundation/x402/pull/4348) (open since Nov 20)
+- [feat(evm): add Circle USDC as the default stablecoin on eight networks](https://github.com/x402-foundation/x402/pull/4337) (merged Nov 20)
+- [fix(python): give back the FacilitatorWeb3Signer nonce when a send fails](https://github.com/x402-foundation/x402/pull/4313) (merged Nov 19)
+- [docs(specs): state the minimum remaining validity for exact EVM validBefore](https://github.com/x402-foundation/x402/pull/4307) (open since Nov 17)
+
 **Meshery**
-- [Make provider package installation robust: bounded download, atomic extraction, GitHub tarballs](https://github.com/meshery/meshery/pull/23574) (open)
-- [Preserve the provider status when deleting a performance profile fails](https://github.com/meshery/meshery/pull/23549) (merged)
-- [Fix typos in user-facing error and log messages](https://github.com/meshery/meshery/pull/23546) (merged)
-- [Return 404 when deleting a performance profile that does not exist](https://github.com/meshery/meshery/pull/23544) (merged)
+- [fix(server): contain panics in HTTP handlers and auto-registration](https://github.com/meshery/meshery/pull/23988) (meshery, merged Nov 20)
+- [\[Docs\] Condense AGENTS.md by moving worked detail into the docs it links to](https://github.com/meshery/meshery/pull/23923) (meshery, open since Nov 18)
+- [\[Kubernetes\] Do not return a nil kubeconfig for an empty file](https://github.com/meshery/meshkit/pull/1176) (meshkit, merged Nov 17)
+- [\[mesheryctl\] Show N/A for a component with no model in component list](https://github.com/meshery/meshery/pull/23818) (meshery, merged Nov 17)
+- [\[mesheryctl\] Report a null server version in system check instead of panicking](https://github.com/meshery/meshery/pull/23817) (meshery, merged Nov 17)
+- [\[mesheryctl\] Treat a null design lookup as not found in design apply](https://github.com/meshery/meshery/pull/23816) (meshery, merged Nov 17)
+- [\[mesheryctl\] Treat a null response as no filters in filter list](https://github.com/meshery/meshery/pull/23815) (meshery, merged Nov 17)
+- [\[mesheryctl\] Treat a null response as an empty page in perf profile and perf result](https://github.com/meshery/meshery/pull/23814) (meshery, merged Nov 17)
+- [fix(server): make provider package installation robust](https://github.com/meshery/meshery/pull/23574) (meshery, open since Nov 14)
+- [\[Server\] Preserve the provider status when deleting a performance profile fails](https://github.com/meshery/meshery/pull/23549) (meshery, merged Nov 14)
+- [\[Server\]\[mesheryctl\] Fix typos in user-facing error and log messages](https://github.com/meshery/meshery/pull/23546) (meshery, merged Nov 14)
+- [\[Server\] Return 404 when deleting a performance profile that does not exist](https://github.com/meshery/meshery/pull/23544) (meshery, merged Nov 14)
+- [Introduction - Shikhar Verma](https://github.com/meshery/meshery/pull/23495) (meshery, merged Nov 13)
+
+**Blowhorn**
+- [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (tells, merged Nov 19)
+- [ci(security): pin remaining floating action tags to commit SHAs](https://github.com/blowhorn-ai/blowhorn-site/pull/624) (blowhorn-site, open since Nov 18)
 
 **Hermes Agent**
-- [Add chronos speculative reasoning plugin to the catalog](https://github.com/NousResearch/hermes-agent/pull/150020) (merged)
-- [Recover desktop sessions on canonical not_found](https://github.com/NousResearch/hermes-agent/pull/152829) (open)
-- [Reject unverifiable Telegram media before an unbounded download](https://github.com/NousResearch/hermes-agent/pull/152811) (open)
-- [Defer psutil import and guard conftest process reap](https://github.com/NousResearch/hermes-agent/pull/150315) (open)
+- [fix(desktop): recover sessions on canonical not_found](https://github.com/NousResearch/hermes-agent/pull/152829) (open since Nov 10)
+- [fix(telegram): reject unverifiable media before unbounded download](https://github.com/NousResearch/hermes-agent/pull/152811) (open since Nov 10)
+- [feat(catalog): add chronos speculative reasoning plugin](https://github.com/NousResearch/hermes-agent/pull/150020) (merged Nov 10)
+- [fix(local_runtime): defer psutil import and guard conftest process reap](https://github.com/NousResearch/hermes-agent/pull/150315) (open since Nov 6)
 
 **Kestra**
-- [GoodData plugin: workspaces, dataSources, executions and layouts tasks, plus a trigger](https://github.com/kestra-io/plugin-gooddata/pull/5) (merged)
-- [Automated data quality validator with DuckDB](https://github.com/kestra-io/blueprints/pull/1606) (merged)
-- [Skip blueprint indexing when the doc-indexing webhook is unset](https://github.com/kestra-io/blueprints/pull/4619) (merged)
+- [fix(ci): skip blueprint indexing when DOC_INDEXING_WEBHOOK is unset](https://github.com/kestra-io/blueprints/pull/4619) (blueprints, merged Nov 4)
+- [feat(gooddata): add workspaces, dataSources, executions, layouts tasks and trigger (closes #4)](https://github.com/kestra-io/plugin-gooddata/pull/5) (plugin-gooddata, merged Oct 21)
+- [feat(blueprints): add automated data quality validator with DuckDB](https://github.com/kestra-io/blueprints/pull/1606) (blueprints, merged Oct 15)
 
 </details>
+<!--AUTO:oss_prs:end-->
 
 ## Tech stack
 
@@ -236,7 +278,7 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" alt="LangChain">
 </p>
 
-<img src="assets/stack.svg" alt="Primary language across 49 public repositories. TypeScript 33, Python 7, HTML 3, JavaScript 3, Kotlin 1, Rust 1, Solidity 1." width="100%">
+<img src="assets/stack.svg" alt="Primary language across my public repositories, refreshed automatically." width="100%">
 
 </div>
 
@@ -258,11 +300,11 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 ## GitHub in numbers
 
 <div align="center">
-<img src="assets/stats.svg" alt="GitHub in numbers: 3,487 commits in the last 12 months, 30 pull requests with 25 merged, contributions to 8 outside projects, 53 original repositories. Longest streak 28 days, 173 active days of 365." width="100%">
+<img src="assets/stats.svg" alt="GitHub in numbers: commits, pull requests, outside projects, original repositories and contribution streaks, refreshed automatically." width="100%">
 <br><br>
 <img src="assets/tape.svg" alt="A cassette card for Shikhar Verma. The tracklist is my eight most recent repositories, and the equalizer is built from 53 weeks of contributions." width="100%">
 <br><br>
-<img src="assets/city.svg" alt="An isometric city built from a year of contributions on a bordered base. 3,605 contributions across 173 active days, busiest day 175." width="100%">
+<img src="assets/city.svg" alt="An isometric city built from the last year of contributions on a bordered base. Taller buildings are busier days." width="100%">
 <br><br>
 <img src="https://komarev.com/ghpvc/?username=Shikhyy&label=Profile%20views&color=111111&style=flat-square" alt="Profile views">
 </div>
@@ -280,5 +322,5 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <br>
 
 <p align="center">
-  <sub>Graphics and the game are generated from my GitHub contribution calendar by <code>scripts/generate.py</code>. All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
+  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-20 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
 </p>
