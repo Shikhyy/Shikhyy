@@ -30,7 +30,7 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 | **Focus** | AI evaluation, agent security, resilient payments |
 | **Studying** | Production Engineering with a minor in Computer Science, NIT Tiruchirappalli |
 | **Club** | Blockchain developer at SPIDER R&D, NIT Trichy |
-| **Open source** | <!--AUTO:oss_row:start-->18 merged pull requests across Meshery, Kestra, x402, Blowhorn and Hermes Agent<!--AUTO:oss_row:end--> |
+| **Open source** | <!--AUTO:oss_row:start-->18 merged pull requests across Meshery, Kestra, x402, Hermes Agent and Blowhorn<!--AUTO:oss_row:end--> |
 
 ## Flagship projects
 
