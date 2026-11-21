@@ -1,19 +1,15 @@
 {
- "commits": 50,
- "prs": 25,
- "repos": 6,
+ "commits": 43,
+ "prs": 24,
+ "repos": 5,
  "top": [
   [
    "meshery/meshery",
-   33
+   32
   ],
   [
    "Shikhyy/Shikhyy",
    7
-  ],
-  [
-   "Shikhyy/lineage",
-   6
   ],
   [
    "x402-foundation/x402",
@@ -21,6 +17,10 @@
   ],
   [
    "blowhorn-ai/tells",
+   1
+  ],
+  [
+   "meshery/meshkit",
    1
   ]
  ]

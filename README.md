@@ -25,7 +25,7 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
-**This week:** <!--AUTO:this_week:start-->50 commits across 6 repositories and 25 pull requests, mostly in **meshery/meshery** (33), **lineage** (6) and **x402-foundation/x402** (2).<!--AUTO:this_week:end-->
+**This week:** <!--AUTO:this_week:start-->43 commits across 5 repositories and 24 pull requests, mostly in **meshery/meshery** (32), **x402-foundation/x402** (2) and **blowhorn-ai/tells** (1).<!--AUTO:this_week:end-->
 
 | | |
 | :-- | :-- |
@@ -35,8 +35,8 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 | **Open source** | <!--AUTO:oss_row:start-->18 merged pull requests across Meshery, Kestra, x402, Hermes Agent and Blowhorn<!--AUTO:oss_row:end--> |
 
 <!--AUTO:spotlight:start-->
-> **Project spotlight, changes daily:** [GOSSIP](https://github.com/Shikhyy/GOSSIP)
-> You bet on an exact value on a Gaussian curve instead of yes or no, so a four-sigma surprise can pay around 1,000x.
+> **Project spotlight, changes daily:** [cobot-arm](https://github.com/Shikhyy/cobot-arm)
+> The 3D arm on its website is not an illustration. It is the project's own CAD export, assembled into six working axes.
 
 <!--AUTO:spotlight:end-->
 
@@ -345,5 +345,5 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <br>
 
 <p align="center">
-  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-20 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
+  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-21 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
 </p>
