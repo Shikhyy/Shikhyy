@@ -25,14 +25,14 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
-**This week:** <!--AUTO:this_week:start-->43 commits across 5 repositories and 24 pull requests, mostly in **meshery/meshery** (32), **x402-foundation/x402** (2) and **blowhorn-ai/tells** (1).<!--AUTO:this_week:end-->
+**This week:** <!--AUTO:this_week:start-->45 commits across 6 repositories and 24 pull requests, mostly in **meshery/meshery** (32), **keploy/keploy** (2) and **x402-foundation/x402** (2).<!--AUTO:this_week:end-->
 
 | | |
 | :-- | :-- |
 | **Focus** | AI evaluation, agent security, resilient payments |
 | **Studying** | Production Engineering with a minor in Computer Science, NIT Tiruchirappalli |
 | **Club** | Blockchain developer at SPIDER R&D, NIT Trichy |
-| **Open source** | <!--AUTO:oss_row:start-->18 merged pull requests across Meshery, Kestra, x402, Hermes Agent and Blowhorn<!--AUTO:oss_row:end--> |
+| **Open source** | <!--AUTO:oss_row:start-->21 merged pull requests across Meshery, keploy, Kestra, x402, Hermes Agent and Blowhorn<!--AUTO:oss_row:end--> |
 
 <!--AUTO:spotlight:start-->
 > **Project spotlight, changes daily:** [cobot-arm](https://github.com/Shikhyy/cobot-arm)
@@ -162,6 +162,11 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <table>
   <tr>
     <td align="center" width="16%">
+      <a href="https://github.com/keploy/keploy/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/keploy.png?size=160" width="56" height="56" alt="keploy"></a><br>
+      <b>keploy</b><br>
+      <sub>3 merged, 1 open</sub>
+    </td>
+    <td align="center" width="16%">
       <a href="https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/x402-foundation.png?size=160" width="56" height="56" alt="x402"></a><br>
       <b>x402</b><br>
       <sub>2 merged, 2 open</sub>
@@ -170,11 +175,6 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
       <a href="https://github.com/meshery/meshery/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/meshery.png?size=160" width="56" height="56" alt="Meshery"></a><br>
       <b>Meshery</b><br>
       <sub>11 merged, 2 open</sub>
-    </td>
-    <td align="center" width="16%">
-      <a href="https://github.com/keploy/keploy/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/keploy.png?size=160" width="56" height="56" alt="keploy"></a><br>
-      <b>keploy</b><br>
-      <sub>4 open</sub>
     </td>
     <td align="center" width="16%">
       <a href="https://github.com/blowhorn-ai/tells/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/blowhorn-ai.png?size=160" width="56" height="56" alt="Blowhorn"></a><br>
@@ -210,16 +210,22 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <!--AUTO:oss_prs:start-->
 **Latest activity**
 
+- **Merged** Nov 21: [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (keploy)
+- **Merged** Nov 21: [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (keploy)
+- **Merged** Nov 21: [test(learn): skip the mount-table zone tests off Linux](https://github.com/keploy/keploy/pull/5321) (keploy)
 - **Open** since Nov 20: [docs(siwx): define origin canonicalization for domain and uri checks](https://github.com/x402-foundation/x402/pull/4348) (x402)
 - **Merged** Nov 20: [feat(evm): add Circle USDC as the default stablecoin on eight networks](https://github.com/x402-foundation/x402/pull/4337) (x402)
 - **Merged** Nov 20: [fix(server): contain panics in HTTP handlers and auto-registration](https://github.com/meshery/meshery/pull/23988) (Meshery)
-- **Open** since Nov 20: [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (keploy)
-- **Open** since Nov 20: [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (keploy)
-- **Open** since Nov 20: [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (keploy)
 
 <details>
 <summary>All pull requests by project (30)</summary>
 <br>
+
+**keploy**
+- [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (merged Nov 21)
+- [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (merged Nov 21)
+- [test(learn): skip the mount-table zone tests off Linux](https://github.com/keploy/keploy/pull/5321) (merged Nov 21)
+- [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (open since Nov 20)
 
 **x402**
 - [docs(siwx): define origin canonicalization for domain and uri checks](https://github.com/x402-foundation/x402/pull/4348) (open since Nov 20)
@@ -241,12 +247,6 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 - [\[Server\]\[mesheryctl\] Fix typos in user-facing error and log messages](https://github.com/meshery/meshery/pull/23546) (meshery, merged Nov 14)
 - [\[Server\] Return 404 when deleting a performance profile that does not exist](https://github.com/meshery/meshery/pull/23544) (meshery, merged Nov 14)
 - [Introduction - Shikhar Verma](https://github.com/meshery/meshery/pull/23495) (meshery, merged Nov 13)
-
-**keploy**
-- [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (open since Nov 20)
-- [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (open since Nov 20)
-- [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (open since Nov 20)
-- [test(learn): skip the mount-table zone tests off Linux](https://github.com/keploy/keploy/pull/5321) (open since Nov 20)
 
 **Blowhorn**
 - [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (tells, merged Nov 19)
