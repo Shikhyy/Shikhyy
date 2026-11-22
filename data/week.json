@@ -1,11 +1,11 @@
 {
- "commits": 45,
- "prs": 24,
+ "commits": 38,
+ "prs": 20,
  "repos": 6,
  "top": [
   [
    "meshery/meshery",
-   32
+   23
   ],
   [
    "Shikhyy/Shikhyy",
@@ -13,7 +13,7 @@
   ],
   [
    "keploy/keploy",
-   2
+   4
   ],
   [
    "x402-foundation/x402",

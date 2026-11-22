@@ -25,18 +25,18 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
-**This week:** <!--AUTO:this_week:start-->45 commits across 6 repositories and 24 pull requests, mostly in **meshery/meshery** (32), **keploy/keploy** (2) and **x402-foundation/x402** (2).<!--AUTO:this_week:end-->
+**This week:** <!--AUTO:this_week:start-->38 commits across 6 repositories and 20 pull requests, mostly in **meshery/meshery** (23), **keploy/keploy** (4) and **x402-foundation/x402** (2).<!--AUTO:this_week:end-->
 
 | | |
 | :-- | :-- |
 | **Focus** | AI evaluation, agent security, resilient payments |
 | **Studying** | Production Engineering with a minor in Computer Science, NIT Tiruchirappalli |
 | **Club** | Blockchain developer at SPIDER R&D, NIT Trichy |
-| **Open source** | <!--AUTO:oss_row:start-->21 merged pull requests across Meshery, keploy, Kestra, x402, Hermes Agent and Blowhorn<!--AUTO:oss_row:end--> |
+| **Open source** | <!--AUTO:oss_row:start-->22 merged pull requests across Meshery, keploy, Kestra, x402, Hermes Agent and Blowhorn<!--AUTO:oss_row:end--> |
 
 <!--AUTO:spotlight:start-->
-> **Project spotlight, changes daily:** [cobot-arm](https://github.com/Shikhyy/cobot-arm)
-> The 3D arm on its website is not an illustration. It is the project's own CAD export, assembled into six working axes.
+> **Project spotlight, changes daily:** [Sangam](https://github.com/Shikhyy/sangam)
+> It measures how you mix Hindi and English, then keeps the agent's replies in the same mix.
 
 <!--AUTO:spotlight:end-->
 
@@ -164,7 +164,7 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
     <td align="center" width="16%">
       <a href="https://github.com/keploy/keploy/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/keploy.png?size=160" width="56" height="56" alt="keploy"></a><br>
       <b>keploy</b><br>
-      <sub>3 merged, 1 open</sub>
+      <sub>4 merged</sub>
     </td>
     <td align="center" width="16%">
       <a href="https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/x402-foundation.png?size=160" width="56" height="56" alt="x402"></a><br>
@@ -210,22 +210,22 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <!--AUTO:oss_prs:start-->
 **Latest activity**
 
+- **Merged** Nov 22: [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (keploy)
 - **Merged** Nov 21: [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (keploy)
 - **Merged** Nov 21: [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (keploy)
 - **Merged** Nov 21: [test(learn): skip the mount-table zone tests off Linux](https://github.com/keploy/keploy/pull/5321) (keploy)
 - **Open** since Nov 20: [docs(siwx): define origin canonicalization for domain and uri checks](https://github.com/x402-foundation/x402/pull/4348) (x402)
 - **Merged** Nov 20: [feat(evm): add Circle USDC as the default stablecoin on eight networks](https://github.com/x402-foundation/x402/pull/4337) (x402)
-- **Merged** Nov 20: [fix(server): contain panics in HTTP handlers and auto-registration](https://github.com/meshery/meshery/pull/23988) (Meshery)
 
 <details>
 <summary>All pull requests by project (30)</summary>
 <br>
 
 **keploy**
+- [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (merged Nov 22)
 - [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (merged Nov 21)
 - [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (merged Nov 21)
 - [test(learn): skip the mount-table zone tests off Linux](https://github.com/keploy/keploy/pull/5321) (merged Nov 21)
-- [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (open since Nov 20)
 
 **x402**
 - [docs(siwx): define origin canonicalization for domain and uri checks](https://github.com/x402-foundation/x402/pull/4348) (open since Nov 20)
@@ -345,5 +345,5 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <br>
 
 <p align="center">
-  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-21 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
+  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-22 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
 </p>
