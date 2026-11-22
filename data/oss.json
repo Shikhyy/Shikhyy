@@ -2,9 +2,49 @@
  {
   "owner": "keploy",
   "repo": "keploy",
+  "title": "fix(templates): find an encoded placeholder after text of another width",
+  "url": "https://github.com/keploy/keploy/pull/5390",
+  "state": "open",
+  "date": "2026-11-22"
+ },
+ {
+  "owner": "keploy",
+  "repo": "keploy",
+  "title": "fix(report): keep the whole body diff when a value is over 64 KiB",
+  "url": "https://github.com/keploy/keploy/pull/5389",
+  "state": "open",
+  "date": "2026-11-22"
+ },
+ {
+  "owner": "keploy",
+  "repo": "keploy",
+  "title": "fix(sanitize): keep a JSON body's numbers and text when it holds a secret",
+  "url": "https://github.com/keploy/keploy/pull/5384",
+  "state": "open",
+  "date": "2026-11-22"
+ },
+ {
+  "owner": "keploy",
+  "repo": "keploy",
+  "title": "fix(import): accept a folder variable that is not all strings",
+  "url": "https://github.com/keploy/keploy/pull/5382",
+  "state": "open",
+  "date": "2026-11-22"
+ },
+ {
+  "owner": "keploy",
+  "repo": "keploy",
   "title": "fix(export): list a folder's requests in a fixed order, and drop a null item",
   "url": "https://github.com/keploy/keploy/pull/5326",
   "state": "merged",
+  "date": "2026-11-22"
+ },
+ {
+  "owner": "keploy",
+  "repo": "jsondiff",
+  "title": "fix: pick the diff's context key in a fixed order",
+  "url": "https://github.com/keploy/jsondiff/pull/26",
+  "state": "open",
   "date": "2026-11-22"
  },
  {
@@ -74,7 +114,7 @@
  {
   "owner": "meshery",
   "repo": "meshery",
-  "title": "[Docs] Condense AGENTS.md by moving worked detail into the docs it links to",
+  "title": "docs: condense AGENTS.md and expand contributing documentation",
   "url": "https://github.com/meshery/meshery/pull/23923",
   "state": "open",
   "date": "2026-11-18"
@@ -146,7 +186,7 @@
  {
   "owner": "meshery",
   "repo": "meshery",
-  "title": "fix(server): make provider package installation robust",
+  "title": "fix(server): harden provider package download and atomic extraction",
   "url": "https://github.com/meshery/meshery/pull/23574",
   "state": "open",
   "date": "2026-11-14"

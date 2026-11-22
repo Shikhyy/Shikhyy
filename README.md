@@ -19,13 +19,13 @@
 
 I build software that handles money or untrusted input, and then I try to break it. Most of my repos started as hackathon or challenge entries. The ones I keep going back to ask the same question: what should a program be allowed to do when it can't be sure who told it to?
 
-In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commits and 49 original repositories<!--AUTO:about_numbers:end-->, from payment agents and prompt-injection scanners to a benchmark for exchange code. A few habits show up in all of them:
+In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commits and 50 original repositories<!--AUTO:about_numbers:end-->, from payment agents and prompt-injection scanners to a benchmark for exchange code. A few habits show up in all of them:
 
 - **Measure instead of claiming.** OrderBook-DST has 329 real trials with confidence intervals. Lineage's attack lab runs *your* attack against the real engine.
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
-**This week:** <!--AUTO:this_week:start-->38 commits across 6 repositories and 20 pull requests, mostly in **meshery/meshery** (23), **keploy/keploy** (4) and **x402-foundation/x402** (2).<!--AUTO:this_week:end-->
+**This week:** <!--AUTO:this_week:start-->63 commits across 7 repositories and 25 pull requests, mostly in **Joltide** (24), **meshery/meshery** (24) and **keploy/keploy** (4).<!--AUTO:this_week:end-->
 
 | | |
 | :-- | :-- |
@@ -164,7 +164,7 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
     <td align="center" width="16%">
       <a href="https://github.com/keploy/keploy/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/keploy.png?size=160" width="56" height="56" alt="keploy"></a><br>
       <b>keploy</b><br>
-      <sub>4 merged</sub>
+      <sub>4 merged, 5 open</sub>
     </td>
     <td align="center" width="16%">
       <a href="https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/x402-foundation.png?size=160" width="56" height="56" alt="x402"></a><br>
@@ -210,22 +210,27 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <!--AUTO:oss_prs:start-->
 **Latest activity**
 
+- **Open** since Nov 22: [fix(templates): find an encoded placeholder after text of another width](https://github.com/keploy/keploy/pull/5390) (keploy)
+- **Open** since Nov 22: [fix(report): keep the whole body diff when a value is over 64 KiB](https://github.com/keploy/keploy/pull/5389) (keploy)
+- **Open** since Nov 22: [fix(sanitize): keep a JSON body's numbers and text when it holds a secret](https://github.com/keploy/keploy/pull/5384) (keploy)
+- **Open** since Nov 22: [fix(import): accept a folder variable that is not all strings](https://github.com/keploy/keploy/pull/5382) (keploy)
 - **Merged** Nov 22: [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (keploy)
-- **Merged** Nov 21: [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (keploy)
-- **Merged** Nov 21: [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (keploy)
-- **Merged** Nov 21: [test(learn): skip the mount-table zone tests off Linux](https://github.com/keploy/keploy/pull/5321) (keploy)
-- **Open** since Nov 20: [docs(siwx): define origin canonicalization for domain and uri checks](https://github.com/x402-foundation/x402/pull/4348) (x402)
-- **Merged** Nov 20: [feat(evm): add Circle USDC as the default stablecoin on eight networks](https://github.com/x402-foundation/x402/pull/4337) (x402)
+- **Open** since Nov 22: [fix: pick the diff's context key in a fixed order](https://github.com/keploy/jsondiff/pull/26) (keploy)
 
 <details>
-<summary>All pull requests by project (30)</summary>
+<summary>All pull requests by project (35)</summary>
 <br>
 
 **keploy**
-- [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (merged Nov 22)
-- [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (merged Nov 21)
-- [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (merged Nov 21)
-- [test(learn): skip the mount-table zone tests off Linux](https://github.com/keploy/keploy/pull/5321) (merged Nov 21)
+- [fix(templates): find an encoded placeholder after text of another width](https://github.com/keploy/keploy/pull/5390) (keploy, open since Nov 22)
+- [fix(report): keep the whole body diff when a value is over 64 KiB](https://github.com/keploy/keploy/pull/5389) (keploy, open since Nov 22)
+- [fix(sanitize): keep a JSON body's numbers and text when it holds a secret](https://github.com/keploy/keploy/pull/5384) (keploy, open since Nov 22)
+- [fix(import): accept a folder variable that is not all strings](https://github.com/keploy/keploy/pull/5382) (keploy, open since Nov 22)
+- [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (keploy, merged Nov 22)
+- [fix: pick the diff's context key in a fixed order](https://github.com/keploy/jsondiff/pull/26) (jsondiff, open since Nov 22)
+- [fix(import): keep the tests of Postman folders that share a name](https://github.com/keploy/keploy/pull/5327) (keploy, merged Nov 21)
+- [fix(normalize): sanitize a set again when normalizing it fails](https://github.com/keploy/keploy/pull/5325) (keploy, merged Nov 21)
+- [test(learn): skip the mount-table zone tests off Linux](https://github.com/keploy/keploy/pull/5321) (keploy, merged Nov 21)
 
 **x402**
 - [docs(siwx): define origin canonicalization for domain and uri checks](https://github.com/x402-foundation/x402/pull/4348) (open since Nov 20)
@@ -235,14 +240,14 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 
 **Meshery**
 - [fix(server): contain panics in HTTP handlers and auto-registration](https://github.com/meshery/meshery/pull/23988) (meshery, merged Nov 20)
-- [\[Docs\] Condense AGENTS.md by moving worked detail into the docs it links to](https://github.com/meshery/meshery/pull/23923) (meshery, open since Nov 18)
+- [docs: condense AGENTS.md and expand contributing documentation](https://github.com/meshery/meshery/pull/23923) (meshery, open since Nov 18)
 - [\[Kubernetes\] Do not return a nil kubeconfig for an empty file](https://github.com/meshery/meshkit/pull/1176) (meshkit, merged Nov 17)
 - [\[mesheryctl\] Show N/A for a component with no model in component list](https://github.com/meshery/meshery/pull/23818) (meshery, merged Nov 17)
 - [\[mesheryctl\] Report a null server version in system check instead of panicking](https://github.com/meshery/meshery/pull/23817) (meshery, merged Nov 17)
 - [\[mesheryctl\] Treat a null design lookup as not found in design apply](https://github.com/meshery/meshery/pull/23816) (meshery, merged Nov 17)
 - [\[mesheryctl\] Treat a null response as no filters in filter list](https://github.com/meshery/meshery/pull/23815) (meshery, merged Nov 17)
 - [\[mesheryctl\] Treat a null response as an empty page in perf profile and perf result](https://github.com/meshery/meshery/pull/23814) (meshery, merged Nov 17)
-- [fix(server): make provider package installation robust](https://github.com/meshery/meshery/pull/23574) (meshery, open since Nov 14)
+- [fix(server): harden provider package download and atomic extraction](https://github.com/meshery/meshery/pull/23574) (meshery, open since Nov 14)
 - [\[Server\] Preserve the provider status when deleting a performance profile fails](https://github.com/meshery/meshery/pull/23549) (meshery, merged Nov 14)
 - [\[Server\]\[mesheryctl\] Fix typos in user-facing error and log messages](https://github.com/meshery/meshery/pull/23546) (meshery, merged Nov 14)
 - [\[Server\] Return 404 when deleting a performance profile that does not exist](https://github.com/meshery/meshery/pull/23544) (meshery, merged Nov 14)
