@@ -1,5 +1,21 @@
 [
  {
+  "owner": "karmada-io",
+  "repo": "karmada",
+  "title": "Fix panic in RetainServiceAccountFields for secret entries without a name",
+  "url": "https://github.com/karmada-io/karmada/pull/8114",
+  "state": "open",
+  "date": "2026-11-23"
+ },
+ {
+  "owner": "jaegertracing",
+  "repo": "jaeger",
+  "title": "test(elasticsearch): cover monthly and yearly periodic index layouts",
+  "url": "https://github.com/jaegertracing/jaeger/pull/10262",
+  "state": "open",
+  "date": "2026-11-23"
+ },
+ {
   "owner": "keploy",
   "repo": "keploy",
   "title": "fix(templates): find an encoded placeholder after text of another width",
@@ -186,7 +202,7 @@
  {
   "owner": "meshery",
   "repo": "meshery",
-  "title": "fix(server): harden provider package download and atomic extraction",
+  "title": "fix(server): harden provider package download and extraction",
   "url": "https://github.com/meshery/meshery/pull/23574",
   "state": "open",
   "date": "2026-11-14"

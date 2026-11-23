@@ -25,7 +25,7 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
-**This week:** <!--AUTO:this_week:start-->63 commits across 7 repositories and 25 pull requests, mostly in **Joltide** (24), **meshery/meshery** (24) and **keploy/keploy** (4).<!--AUTO:this_week:end-->
+**This week:** <!--AUTO:this_week:start-->108 commits across 8 repositories and 27 pull requests, mostly in **bell** (48), **Joltide** (24) and **meshery/meshery** (24).<!--AUTO:this_week:end-->
 
 | | |
 | :-- | :-- |
@@ -35,8 +35,8 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 | **Open source** | <!--AUTO:oss_row:start-->22 merged pull requests across Meshery, keploy, Kestra, x402, Hermes Agent and Blowhorn<!--AUTO:oss_row:end--> |
 
 <!--AUTO:spotlight:start-->
-> **Project spotlight, changes daily:** [Sangam](https://github.com/Shikhyy/sangam)
-> It measures how you mix Hindi and English, then keeps the agent's replies in the same mix.
+> **Project spotlight, changes daily:** [VitaSync](https://github.com/Shikhyy/VitaSync)
+> A doctor cannot query a patient's records unless the patient has granted active consent.
 
 <!--AUTO:spotlight:end-->
 
@@ -162,6 +162,16 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <table>
   <tr>
     <td align="center" width="16%">
+      <a href="https://github.com/karmada-io/karmada/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/karmada-io.png?size=160" width="56" height="56" alt="karmada-io"></a><br>
+      <b>karmada-io</b><br>
+      <sub>1 open</sub>
+    </td>
+    <td align="center" width="16%">
+      <a href="https://github.com/jaegertracing/jaeger/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/jaegertracing.png?size=160" width="56" height="56" alt="jaegertracing"></a><br>
+      <b>jaegertracing</b><br>
+      <sub>1 open</sub>
+    </td>
+    <td align="center" width="16%">
       <a href="https://github.com/keploy/keploy/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/keploy.png?size=160" width="56" height="56" alt="keploy"></a><br>
       <b>keploy</b><br>
       <sub>4 merged, 5 open</sub>
@@ -180,16 +190,6 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
       <a href="https://github.com/blowhorn-ai/tells/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/blowhorn-ai.png?size=160" width="56" height="56" alt="Blowhorn"></a><br>
       <b>Blowhorn</b><br>
       <sub>1 merged, 1 open</sub>
-    </td>
-    <td align="center" width="16%">
-      <a href="https://github.com/NousResearch/hermes-agent/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/NousResearch.png?size=160" width="56" height="56" alt="Hermes Agent"></a><br>
-      <b>Hermes Agent</b><br>
-      <sub>1 merged, 3 open</sub>
-    </td>
-    <td align="center" width="16%">
-      <a href="https://github.com/kestra-io/blueprints/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/kestra-io.png?size=160" width="56" height="56" alt="Kestra"></a><br>
-      <b>Kestra</b><br>
-      <sub>3 merged</sub>
     </td>
   </tr>
 </table>
@@ -210,16 +210,22 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <!--AUTO:oss_prs:start-->
 **Latest activity**
 
+- **Open** since Nov 23: [Fix panic in RetainServiceAccountFields for secret entries without a name](https://github.com/karmada-io/karmada/pull/8114) (karmada-io)
+- **Open** since Nov 23: [test(elasticsearch): cover monthly and yearly periodic index layouts](https://github.com/jaegertracing/jaeger/pull/10262) (jaegertracing)
 - **Open** since Nov 22: [fix(templates): find an encoded placeholder after text of another width](https://github.com/keploy/keploy/pull/5390) (keploy)
 - **Open** since Nov 22: [fix(report): keep the whole body diff when a value is over 64 KiB](https://github.com/keploy/keploy/pull/5389) (keploy)
 - **Open** since Nov 22: [fix(sanitize): keep a JSON body's numbers and text when it holds a secret](https://github.com/keploy/keploy/pull/5384) (keploy)
 - **Open** since Nov 22: [fix(import): accept a folder variable that is not all strings](https://github.com/keploy/keploy/pull/5382) (keploy)
-- **Merged** Nov 22: [fix(export): list a folder's requests in a fixed order, and drop a null item](https://github.com/keploy/keploy/pull/5326) (keploy)
-- **Open** since Nov 22: [fix: pick the diff's context key in a fixed order](https://github.com/keploy/jsondiff/pull/26) (keploy)
 
 <details>
-<summary>All pull requests by project (35)</summary>
+<summary>All pull requests by project (37)</summary>
 <br>
+
+**karmada-io**
+- [Fix panic in RetainServiceAccountFields for secret entries without a name](https://github.com/karmada-io/karmada/pull/8114) (open since Nov 23)
+
+**jaegertracing**
+- [test(elasticsearch): cover monthly and yearly periodic index layouts](https://github.com/jaegertracing/jaeger/pull/10262) (open since Nov 23)
 
 **keploy**
 - [fix(templates): find an encoded placeholder after text of another width](https://github.com/keploy/keploy/pull/5390) (keploy, open since Nov 22)
@@ -247,7 +253,7 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 - [\[mesheryctl\] Treat a null design lookup as not found in design apply](https://github.com/meshery/meshery/pull/23816) (meshery, merged Nov 17)
 - [\[mesheryctl\] Treat a null response as no filters in filter list](https://github.com/meshery/meshery/pull/23815) (meshery, merged Nov 17)
 - [\[mesheryctl\] Treat a null response as an empty page in perf profile and perf result](https://github.com/meshery/meshery/pull/23814) (meshery, merged Nov 17)
-- [fix(server): harden provider package download and atomic extraction](https://github.com/meshery/meshery/pull/23574) (meshery, open since Nov 14)
+- [fix(server): harden provider package download and extraction](https://github.com/meshery/meshery/pull/23574) (meshery, open since Nov 14)
 - [\[Server\] Preserve the provider status when deleting a performance profile fails](https://github.com/meshery/meshery/pull/23549) (meshery, merged Nov 14)
 - [\[Server\]\[mesheryctl\] Fix typos in user-facing error and log messages](https://github.com/meshery/meshery/pull/23546) (meshery, merged Nov 14)
 - [\[Server\] Return 404 when deleting a performance profile that does not exist](https://github.com/meshery/meshery/pull/23544) (meshery, merged Nov 14)
@@ -350,5 +356,5 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <br>
 
 <p align="center">
-  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-22 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
+  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-23 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
 </p>
