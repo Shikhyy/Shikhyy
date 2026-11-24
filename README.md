@@ -25,18 +25,18 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
-**This week:** <!--AUTO:this_week:start-->108 commits across 8 repositories and 27 pull requests, mostly in **bell** (48), **Joltide** (24) and **meshery/meshery** (24).<!--AUTO:this_week:end-->
+**This week:** <!--AUTO:this_week:start-->110 commits across 9 repositories and 28 pull requests, mostly in **bell** (48), **meshery/meshery** (27) and **Joltide** (24).<!--AUTO:this_week:end-->
 
 | | |
 | :-- | :-- |
 | **Focus** | AI evaluation, agent security, resilient payments |
 | **Studying** | Production Engineering with a minor in Computer Science, NIT Tiruchirappalli |
 | **Club** | Blockchain developer at SPIDER R&D, NIT Trichy |
-| **Open source** | <!--AUTO:oss_row:start-->22 merged pull requests across Meshery, keploy, Kestra, x402, Hermes Agent and Blowhorn<!--AUTO:oss_row:end--> |
+| **Open source** | <!--AUTO:oss_row:start-->24 merged pull requests across Meshery, keploy, Kestra, Blowhorn, x402 and Hermes Agent<!--AUTO:oss_row:end--> |
 
 <!--AUTO:spotlight:start-->
-> **Project spotlight, changes daily:** [VitaSync](https://github.com/Shikhyy/VitaSync)
-> A doctor cannot query a patient's records unless the patient has granted active consent.
+> **Project spotlight, changes daily:** [Lineage](https://github.com/Shikhyy/lineage)
+> Its attack lab runs the phishing message you write twice on the real engine, once with no guard and once behind Lineage, and shows the difference computed from real data.
 
 <!--AUTO:spotlight:end-->
 
@@ -162,6 +162,11 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <table>
   <tr>
     <td align="center" width="16%">
+      <a href="https://github.com/meshery/meshkit/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/meshery.png?size=160" width="56" height="56" alt="Meshery"></a><br>
+      <b>Meshery</b><br>
+      <sub>12 merged, 2 open</sub>
+    </td>
+    <td align="center" width="16%">
       <a href="https://github.com/karmada-io/karmada/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/karmada-io.png?size=160" width="56" height="56" alt="karmada-io"></a><br>
       <b>karmada-io</b><br>
       <sub>1 open</sub>
@@ -172,6 +177,11 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
       <sub>1 open</sub>
     </td>
     <td align="center" width="16%">
+      <a href="https://github.com/blowhorn-ai/blowhorn-site/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/blowhorn-ai.png?size=160" width="56" height="56" alt="Blowhorn"></a><br>
+      <b>Blowhorn</b><br>
+      <sub>2 merged</sub>
+    </td>
+    <td align="center" width="16%">
       <a href="https://github.com/keploy/keploy/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/keploy.png?size=160" width="56" height="56" alt="keploy"></a><br>
       <b>keploy</b><br>
       <sub>4 merged, 5 open</sub>
@@ -180,16 +190,6 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
       <a href="https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/x402-foundation.png?size=160" width="56" height="56" alt="x402"></a><br>
       <b>x402</b><br>
       <sub>2 merged, 2 open</sub>
-    </td>
-    <td align="center" width="16%">
-      <a href="https://github.com/meshery/meshery/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/meshery.png?size=160" width="56" height="56" alt="Meshery"></a><br>
-      <b>Meshery</b><br>
-      <sub>11 merged, 2 open</sub>
-    </td>
-    <td align="center" width="16%">
-      <a href="https://github.com/blowhorn-ai/tells/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/blowhorn-ai.png?size=160" width="56" height="56" alt="Blowhorn"></a><br>
-      <b>Blowhorn</b><br>
-      <sub>1 merged, 1 open</sub>
     </td>
   </tr>
 </table>
@@ -210,22 +210,42 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <!--AUTO:oss_prs:start-->
 **Latest activity**
 
+- **Open** since Nov 23: [\[Registry\] Reject a SourceURL with no version element instead of panicking](https://github.com/meshery/meshkit/pull/1187) (Meshery)
+- **Merged** Nov 23: [fix(server): harden provider package download and atomic extraction](https://github.com/meshery/meshery/pull/23574) (Meshery)
 - **Open** since Nov 23: [Fix panic in RetainServiceAccountFields for secret entries without a name](https://github.com/karmada-io/karmada/pull/8114) (karmada-io)
 - **Open** since Nov 23: [test(elasticsearch): cover monthly and yearly periodic index layouts](https://github.com/jaegertracing/jaeger/pull/10262) (jaegertracing)
+- **Merged** Nov 23: [ci(security): pin remaining floating action tags to commit SHAs](https://github.com/blowhorn-ai/blowhorn-site/pull/624) (Blowhorn)
 - **Open** since Nov 22: [fix(templates): find an encoded placeholder after text of another width](https://github.com/keploy/keploy/pull/5390) (keploy)
-- **Open** since Nov 22: [fix(report): keep the whole body diff when a value is over 64 KiB](https://github.com/keploy/keploy/pull/5389) (keploy)
-- **Open** since Nov 22: [fix(sanitize): keep a JSON body's numbers and text when it holds a secret](https://github.com/keploy/keploy/pull/5384) (keploy)
-- **Open** since Nov 22: [fix(import): accept a folder variable that is not all strings](https://github.com/keploy/keploy/pull/5382) (keploy)
 
 <details>
-<summary>All pull requests by project (37)</summary>
+<summary>All pull requests by project (38)</summary>
 <br>
+
+**Meshery**
+- [\[Registry\] Reject a SourceURL with no version element instead of panicking](https://github.com/meshery/meshkit/pull/1187) (meshkit, open since Nov 23)
+- [fix(server): harden provider package download and atomic extraction](https://github.com/meshery/meshery/pull/23574) (meshery, merged Nov 23)
+- [fix(server): contain panics in HTTP handlers and auto-registration](https://github.com/meshery/meshery/pull/23988) (meshery, merged Nov 20)
+- [docs: condense AGENTS.md and expand contributing documentation](https://github.com/meshery/meshery/pull/23923) (meshery, open since Nov 18)
+- [\[Kubernetes\] Do not return a nil kubeconfig for an empty file](https://github.com/meshery/meshkit/pull/1176) (meshkit, merged Nov 17)
+- [\[mesheryctl\] Show N/A for a component with no model in component list](https://github.com/meshery/meshery/pull/23818) (meshery, merged Nov 17)
+- [\[mesheryctl\] Report a null server version in system check instead of panicking](https://github.com/meshery/meshery/pull/23817) (meshery, merged Nov 17)
+- [\[mesheryctl\] Treat a null design lookup as not found in design apply](https://github.com/meshery/meshery/pull/23816) (meshery, merged Nov 17)
+- [\[mesheryctl\] Treat a null response as no filters in filter list](https://github.com/meshery/meshery/pull/23815) (meshery, merged Nov 17)
+- [\[mesheryctl\] Treat a null response as an empty page in perf profile and perf result](https://github.com/meshery/meshery/pull/23814) (meshery, merged Nov 17)
+- [\[Server\] Preserve the provider status when deleting a performance profile fails](https://github.com/meshery/meshery/pull/23549) (meshery, merged Nov 14)
+- [\[Server\]\[mesheryctl\] Fix typos in user-facing error and log messages](https://github.com/meshery/meshery/pull/23546) (meshery, merged Nov 14)
+- [\[Server\] Return 404 when deleting a performance profile that does not exist](https://github.com/meshery/meshery/pull/23544) (meshery, merged Nov 14)
+- [Introduction - Shikhar Verma](https://github.com/meshery/meshery/pull/23495) (meshery, merged Nov 13)
 
 **karmada-io**
 - [Fix panic in RetainServiceAccountFields for secret entries without a name](https://github.com/karmada-io/karmada/pull/8114) (open since Nov 23)
 
 **jaegertracing**
 - [test(elasticsearch): cover monthly and yearly periodic index layouts](https://github.com/jaegertracing/jaeger/pull/10262) (open since Nov 23)
+
+**Blowhorn**
+- [ci(security): pin remaining floating action tags to commit SHAs](https://github.com/blowhorn-ai/blowhorn-site/pull/624) (blowhorn-site, merged Nov 23)
+- [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (tells, merged Nov 19)
 
 **keploy**
 - [fix(templates): find an encoded placeholder after text of another width](https://github.com/keploy/keploy/pull/5390) (keploy, open since Nov 22)
@@ -243,25 +263,6 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 - [feat(evm): add Circle USDC as the default stablecoin on eight networks](https://github.com/x402-foundation/x402/pull/4337) (merged Nov 20)
 - [fix(python): give back the FacilitatorWeb3Signer nonce when a send fails](https://github.com/x402-foundation/x402/pull/4313) (merged Nov 19)
 - [docs(specs): state the minimum remaining validity for exact EVM validBefore](https://github.com/x402-foundation/x402/pull/4307) (open since Nov 17)
-
-**Meshery**
-- [fix(server): contain panics in HTTP handlers and auto-registration](https://github.com/meshery/meshery/pull/23988) (meshery, merged Nov 20)
-- [docs: condense AGENTS.md and expand contributing documentation](https://github.com/meshery/meshery/pull/23923) (meshery, open since Nov 18)
-- [\[Kubernetes\] Do not return a nil kubeconfig for an empty file](https://github.com/meshery/meshkit/pull/1176) (meshkit, merged Nov 17)
-- [\[mesheryctl\] Show N/A for a component with no model in component list](https://github.com/meshery/meshery/pull/23818) (meshery, merged Nov 17)
-- [\[mesheryctl\] Report a null server version in system check instead of panicking](https://github.com/meshery/meshery/pull/23817) (meshery, merged Nov 17)
-- [\[mesheryctl\] Treat a null design lookup as not found in design apply](https://github.com/meshery/meshery/pull/23816) (meshery, merged Nov 17)
-- [\[mesheryctl\] Treat a null response as no filters in filter list](https://github.com/meshery/meshery/pull/23815) (meshery, merged Nov 17)
-- [\[mesheryctl\] Treat a null response as an empty page in perf profile and perf result](https://github.com/meshery/meshery/pull/23814) (meshery, merged Nov 17)
-- [fix(server): harden provider package download and extraction](https://github.com/meshery/meshery/pull/23574) (meshery, open since Nov 14)
-- [\[Server\] Preserve the provider status when deleting a performance profile fails](https://github.com/meshery/meshery/pull/23549) (meshery, merged Nov 14)
-- [\[Server\]\[mesheryctl\] Fix typos in user-facing error and log messages](https://github.com/meshery/meshery/pull/23546) (meshery, merged Nov 14)
-- [\[Server\] Return 404 when deleting a performance profile that does not exist](https://github.com/meshery/meshery/pull/23544) (meshery, merged Nov 14)
-- [Introduction - Shikhar Verma](https://github.com/meshery/meshery/pull/23495) (meshery, merged Nov 13)
-
-**Blowhorn**
-- [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (tells, merged Nov 19)
-- [ci(security): pin remaining floating action tags to commit SHAs](https://github.com/blowhorn-ai/blowhorn-site/pull/624) (blowhorn-site, open since Nov 18)
 
 **Hermes Agent**
 - [fix(desktop): recover sessions on canonical not_found](https://github.com/NousResearch/hermes-agent/pull/152829) (open since Nov 10)
@@ -356,5 +357,5 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <br>
 
 <p align="center">
-  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-23 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
+  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-24 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
 </p>

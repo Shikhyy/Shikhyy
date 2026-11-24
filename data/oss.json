@@ -1,5 +1,21 @@
 [
  {
+  "owner": "meshery",
+  "repo": "meshkit",
+  "title": "[Registry] Reject a SourceURL with no version element instead of panicking",
+  "url": "https://github.com/meshery/meshkit/pull/1187",
+  "state": "open",
+  "date": "2026-11-23"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "fix(server): harden provider package download and atomic extraction",
+  "url": "https://github.com/meshery/meshery/pull/23574",
+  "state": "merged",
+  "date": "2026-11-23"
+ },
+ {
   "owner": "karmada-io",
   "repo": "karmada",
   "title": "Fix panic in RetainServiceAccountFields for secret entries without a name",
@@ -13,6 +29,14 @@
   "title": "test(elasticsearch): cover monthly and yearly periodic index layouts",
   "url": "https://github.com/jaegertracing/jaeger/pull/10262",
   "state": "open",
+  "date": "2026-11-23"
+ },
+ {
+  "owner": "blowhorn-ai",
+  "repo": "blowhorn-site",
+  "title": "ci(security): pin remaining floating action tags to commit SHAs",
+  "url": "https://github.com/blowhorn-ai/blowhorn-site/pull/624",
+  "state": "merged",
   "date": "2026-11-23"
  },
  {
@@ -136,14 +160,6 @@
   "date": "2026-11-18"
  },
  {
-  "owner": "blowhorn-ai",
-  "repo": "blowhorn-site",
-  "title": "ci(security): pin remaining floating action tags to commit SHAs",
-  "url": "https://github.com/blowhorn-ai/blowhorn-site/pull/624",
-  "state": "open",
-  "date": "2026-11-18"
- },
- {
   "owner": "x402-foundation",
   "repo": "x402",
   "title": "docs(specs): state the minimum remaining validity for exact EVM validBefore",
@@ -198,14 +214,6 @@
   "url": "https://github.com/meshery/meshery/pull/23814",
   "state": "merged",
   "date": "2026-11-17"
- },
- {
-  "owner": "meshery",
-  "repo": "meshery",
-  "title": "fix(server): harden provider package download and extraction",
-  "url": "https://github.com/meshery/meshery/pull/23574",
-  "state": "open",
-  "date": "2026-11-14"
  },
  {
   "owner": "meshery",
