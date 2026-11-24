@@ -1,8 +1,16 @@
 [
  {
+  "owner": "blowhorn-ai",
+  "repo": "tells",
+  "title": "ci: update GitHub Actions to their latest versions",
+  "url": "https://github.com/blowhorn-ai/tells/pull/95",
+  "state": "open",
+  "date": "2026-11-24"
+ },
+ {
   "owner": "meshery",
   "repo": "meshkit",
-  "title": "[Registry] Reject a SourceURL with no version element instead of panicking",
+  "title": "fix(registry): reject SourceURL without version instead of panicking",
   "url": "https://github.com/meshery/meshkit/pull/1187",
   "state": "open",
   "date": "2026-11-23"
@@ -154,7 +162,7 @@
  {
   "owner": "meshery",
   "repo": "meshery",
-  "title": "docs: condense AGENTS.md and expand contributing documentation",
+  "title": "docs: condense AGENTS.md and relocate detail to documentation",
   "url": "https://github.com/meshery/meshery/pull/23923",
   "state": "open",
   "date": "2026-11-18"

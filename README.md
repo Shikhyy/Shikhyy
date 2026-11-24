@@ -25,7 +25,7 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
-**This week:** <!--AUTO:this_week:start-->110 commits across 9 repositories and 28 pull requests, mostly in **bell** (48), **meshery/meshery** (27) and **Joltide** (24).<!--AUTO:this_week:end-->
+**This week:** <!--AUTO:this_week:start-->113 commits across 10 repositories and 29 pull requests, mostly in **bell** (48), **meshery/meshery** (29) and **Joltide** (24).<!--AUTO:this_week:end-->
 
 | | |
 | :-- | :-- |
@@ -162,6 +162,11 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <table>
   <tr>
     <td align="center" width="16%">
+      <a href="https://github.com/blowhorn-ai/tells/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/blowhorn-ai.png?size=160" width="56" height="56" alt="Blowhorn"></a><br>
+      <b>Blowhorn</b><br>
+      <sub>2 merged, 1 open</sub>
+    </td>
+    <td align="center" width="16%">
       <a href="https://github.com/meshery/meshkit/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/meshery.png?size=160" width="56" height="56" alt="Meshery"></a><br>
       <b>Meshery</b><br>
       <sub>12 merged, 2 open</sub>
@@ -175,11 +180,6 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
       <a href="https://github.com/jaegertracing/jaeger/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/jaegertracing.png?size=160" width="56" height="56" alt="jaegertracing"></a><br>
       <b>jaegertracing</b><br>
       <sub>1 open</sub>
-    </td>
-    <td align="center" width="16%">
-      <a href="https://github.com/blowhorn-ai/blowhorn-site/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/blowhorn-ai.png?size=160" width="56" height="56" alt="Blowhorn"></a><br>
-      <b>Blowhorn</b><br>
-      <sub>2 merged</sub>
     </td>
     <td align="center" width="16%">
       <a href="https://github.com/keploy/keploy/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/keploy.png?size=160" width="56" height="56" alt="keploy"></a><br>
@@ -210,22 +210,27 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <!--AUTO:oss_prs:start-->
 **Latest activity**
 
-- **Open** since Nov 23: [\[Registry\] Reject a SourceURL with no version element instead of panicking](https://github.com/meshery/meshkit/pull/1187) (Meshery)
+- **Open** since Nov 24: [ci: update GitHub Actions to their latest versions](https://github.com/blowhorn-ai/tells/pull/95) (Blowhorn)
+- **Open** since Nov 23: [fix(registry): reject SourceURL without version instead of panicking](https://github.com/meshery/meshkit/pull/1187) (Meshery)
 - **Merged** Nov 23: [fix(server): harden provider package download and atomic extraction](https://github.com/meshery/meshery/pull/23574) (Meshery)
 - **Open** since Nov 23: [Fix panic in RetainServiceAccountFields for secret entries without a name](https://github.com/karmada-io/karmada/pull/8114) (karmada-io)
 - **Open** since Nov 23: [test(elasticsearch): cover monthly and yearly periodic index layouts](https://github.com/jaegertracing/jaeger/pull/10262) (jaegertracing)
 - **Merged** Nov 23: [ci(security): pin remaining floating action tags to commit SHAs](https://github.com/blowhorn-ai/blowhorn-site/pull/624) (Blowhorn)
-- **Open** since Nov 22: [fix(templates): find an encoded placeholder after text of another width](https://github.com/keploy/keploy/pull/5390) (keploy)
 
 <details>
-<summary>All pull requests by project (38)</summary>
+<summary>All pull requests by project (39)</summary>
 <br>
 
+**Blowhorn**
+- [ci: update GitHub Actions to their latest versions](https://github.com/blowhorn-ai/tells/pull/95) (tells, open since Nov 24)
+- [ci(security): pin remaining floating action tags to commit SHAs](https://github.com/blowhorn-ai/blowhorn-site/pull/624) (blowhorn-site, merged Nov 23)
+- [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (tells, merged Nov 19)
+
 **Meshery**
-- [\[Registry\] Reject a SourceURL with no version element instead of panicking](https://github.com/meshery/meshkit/pull/1187) (meshkit, open since Nov 23)
+- [fix(registry): reject SourceURL without version instead of panicking](https://github.com/meshery/meshkit/pull/1187) (meshkit, open since Nov 23)
 - [fix(server): harden provider package download and atomic extraction](https://github.com/meshery/meshery/pull/23574) (meshery, merged Nov 23)
 - [fix(server): contain panics in HTTP handlers and auto-registration](https://github.com/meshery/meshery/pull/23988) (meshery, merged Nov 20)
-- [docs: condense AGENTS.md and expand contributing documentation](https://github.com/meshery/meshery/pull/23923) (meshery, open since Nov 18)
+- [docs: condense AGENTS.md and relocate detail to documentation](https://github.com/meshery/meshery/pull/23923) (meshery, open since Nov 18)
 - [\[Kubernetes\] Do not return a nil kubeconfig for an empty file](https://github.com/meshery/meshkit/pull/1176) (meshkit, merged Nov 17)
 - [\[mesheryctl\] Show N/A for a component with no model in component list](https://github.com/meshery/meshery/pull/23818) (meshery, merged Nov 17)
 - [\[mesheryctl\] Report a null server version in system check instead of panicking](https://github.com/meshery/meshery/pull/23817) (meshery, merged Nov 17)
@@ -242,10 +247,6 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 
 **jaegertracing**
 - [test(elasticsearch): cover monthly and yearly periodic index layouts](https://github.com/jaegertracing/jaeger/pull/10262) (open since Nov 23)
-
-**Blowhorn**
-- [ci(security): pin remaining floating action tags to commit SHAs](https://github.com/blowhorn-ai/blowhorn-site/pull/624) (blowhorn-site, merged Nov 23)
-- [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (tells, merged Nov 19)
 
 **keploy**
 - [fix(templates): find an encoded placeholder after text of another width](https://github.com/keploy/keploy/pull/5390) (keploy, open since Nov 22)
