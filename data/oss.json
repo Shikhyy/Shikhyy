@@ -4,7 +4,15 @@
   "repo": "tells",
   "title": "ci: update GitHub Actions to their latest versions",
   "url": "https://github.com/blowhorn-ai/tells/pull/95",
-  "state": "open",
+  "state": "merged",
+  "date": "2026-11-24"
+ },
+ {
+  "owner": "blowhorn-ai",
+  "repo": "blowhorn-site",
+  "title": "ci(site): guard the Enlist control and a Coming soon split on the home page",
+  "url": "https://github.com/blowhorn-ai/blowhorn-site/pull/737",
+  "state": "merged",
   "date": "2026-11-24"
  },
  {

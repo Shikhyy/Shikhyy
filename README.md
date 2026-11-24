@@ -19,20 +19,20 @@
 
 I build software that handles money or untrusted input, and then I try to break it. Most of my repos started as hackathon or challenge entries. The ones I keep going back to ask the same question: what should a program be allowed to do when it can't be sure who told it to?
 
-In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commits and 50 original repositories<!--AUTO:about_numbers:end-->, from payment agents and prompt-injection scanners to a benchmark for exchange code. A few habits show up in all of them:
+In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commits and 51 original repositories<!--AUTO:about_numbers:end-->, from payment agents and prompt-injection scanners to a benchmark for exchange code. A few habits show up in all of them:
 
 - **Measure instead of claiming.** OrderBook-DST has 329 real trials with confidence intervals. Lineage's attack lab runs *your* attack against the real engine.
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
-**This week:** <!--AUTO:this_week:start-->113 commits across 10 repositories and 29 pull requests, mostly in **bell** (48), **meshery/meshery** (29) and **Joltide** (24).<!--AUTO:this_week:end-->
+**This week:** <!--AUTO:this_week:start-->141 commits across 11 repositories and 30 pull requests, mostly in **bell** (48), **meshery/meshery** (29) and **Saans** (26).<!--AUTO:this_week:end-->
 
 | | |
 | :-- | :-- |
 | **Focus** | AI evaluation, agent security, resilient payments |
 | **Studying** | Production Engineering with a minor in Computer Science, NIT Tiruchirappalli |
 | **Club** | Blockchain developer at SPIDER R&D, NIT Trichy |
-| **Open source** | <!--AUTO:oss_row:start-->24 merged pull requests across Meshery, keploy, Kestra, Blowhorn, x402 and Hermes Agent<!--AUTO:oss_row:end--> |
+| **Open source** | <!--AUTO:oss_row:start-->26 merged pull requests across Meshery, Blowhorn, keploy, Kestra, x402 and Hermes Agent<!--AUTO:oss_row:end--> |
 
 <!--AUTO:spotlight:start-->
 > **Project spotlight, changes daily:** [Lineage](https://github.com/Shikhyy/lineage)
@@ -164,7 +164,7 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
     <td align="center" width="16%">
       <a href="https://github.com/blowhorn-ai/tells/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/blowhorn-ai.png?size=160" width="56" height="56" alt="Blowhorn"></a><br>
       <b>Blowhorn</b><br>
-      <sub>2 merged, 1 open</sub>
+      <sub>4 merged</sub>
     </td>
     <td align="center" width="16%">
       <a href="https://github.com/meshery/meshkit/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/meshery.png?size=160" width="56" height="56" alt="Meshery"></a><br>
@@ -210,19 +210,20 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <!--AUTO:oss_prs:start-->
 **Latest activity**
 
-- **Open** since Nov 24: [ci: update GitHub Actions to their latest versions](https://github.com/blowhorn-ai/tells/pull/95) (Blowhorn)
+- **Merged** Nov 24: [ci: update GitHub Actions to their latest versions](https://github.com/blowhorn-ai/tells/pull/95) (Blowhorn)
+- **Merged** Nov 24: [ci(site): guard the Enlist control and a Coming soon split on the home page](https://github.com/blowhorn-ai/blowhorn-site/pull/737) (Blowhorn)
 - **Open** since Nov 23: [fix(registry): reject SourceURL without version instead of panicking](https://github.com/meshery/meshkit/pull/1187) (Meshery)
 - **Merged** Nov 23: [fix(server): harden provider package download and atomic extraction](https://github.com/meshery/meshery/pull/23574) (Meshery)
 - **Open** since Nov 23: [Fix panic in RetainServiceAccountFields for secret entries without a name](https://github.com/karmada-io/karmada/pull/8114) (karmada-io)
 - **Open** since Nov 23: [test(elasticsearch): cover monthly and yearly periodic index layouts](https://github.com/jaegertracing/jaeger/pull/10262) (jaegertracing)
-- **Merged** Nov 23: [ci(security): pin remaining floating action tags to commit SHAs](https://github.com/blowhorn-ai/blowhorn-site/pull/624) (Blowhorn)
 
 <details>
-<summary>All pull requests by project (39)</summary>
+<summary>All pull requests by project (40)</summary>
 <br>
 
 **Blowhorn**
-- [ci: update GitHub Actions to their latest versions](https://github.com/blowhorn-ai/tells/pull/95) (tells, open since Nov 24)
+- [ci: update GitHub Actions to their latest versions](https://github.com/blowhorn-ai/tells/pull/95) (tells, merged Nov 24)
+- [ci(site): guard the Enlist control and a Coming soon split on the home page](https://github.com/blowhorn-ai/blowhorn-site/pull/737) (blowhorn-site, merged Nov 24)
 - [ci(security): pin remaining floating action tags to commit SHAs](https://github.com/blowhorn-ai/blowhorn-site/pull/624) (blowhorn-site, merged Nov 23)
 - [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (tells, merged Nov 19)
 
