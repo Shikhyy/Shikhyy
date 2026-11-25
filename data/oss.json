@@ -1,5 +1,29 @@
 [
  {
+  "owner": "meshery",
+  "repo": "meshkit",
+  "title": "fix(config): avoid panic in Viper GetKey for missing or non-string keys",
+  "url": "https://github.com/meshery/meshkit/pull/1197",
+  "state": "open",
+  "date": "2026-11-25"
+ },
+ {
+  "owner": "meshery",
+  "repo": "meshery",
+  "title": "fix(server): add timeout and trace propagation to remote auth HTTP calls",
+  "url": "https://github.com/meshery/meshery/pull/24351",
+  "state": "open",
+  "date": "2026-11-25"
+ },
+ {
+  "owner": "karmada-io",
+  "repo": "karmada",
+  "title": "karmadactl token: reject a negative --ttl and fix the delete error message",
+  "url": "https://github.com/karmada-io/karmada/pull/8120",
+  "state": "open",
+  "date": "2026-11-25"
+ },
+ {
   "owner": "blowhorn-ai",
   "repo": "tells",
   "title": "ci: update GitHub Actions to their latest versions",
@@ -18,7 +42,7 @@
  {
   "owner": "meshery",
   "repo": "meshkit",
-  "title": "fix(registry): reject SourceURL without version instead of panicking",
+  "title": "fix(registry): guard SourceURL version index against out-of-bounds panic",
   "url": "https://github.com/meshery/meshkit/pull/1187",
   "state": "open",
   "date": "2026-11-23"
