@@ -1,5 +1,13 @@
 [
  {
+  "owner": "karmada-io",
+  "repo": "karmada",
+  "title": "remediation: treat an empty decisionMatches list like an omitted one",
+  "url": "https://github.com/karmada-io/karmada/pull/8125",
+  "state": "open",
+  "date": "2026-11-26"
+ },
+ {
   "owner": "meshery",
   "repo": "meshkit",
   "title": "fix(config): avoid panic in Viper GetKey for missing or non-string keys",
@@ -10,7 +18,7 @@
  {
   "owner": "meshery",
   "repo": "meshery",
-  "title": "fix(server): add timeout and trace propagation to remote auth HTTP calls",
+  "title": "fix(server): add timeout and tracing transport to remote auth client",
   "url": "https://github.com/meshery/meshery/pull/24351",
   "state": "open",
   "date": "2026-11-25"
