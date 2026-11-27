@@ -1,6 +1,6 @@
 {
- "commits": 129,
- "prs": 27,
+ "commits": 121,
+ "prs": 24,
  "repos": 10,
  "top": [
   [
@@ -13,11 +13,11 @@
   ],
   [
    "Shikhyy/Saans",
-   23
+   22
   ],
   [
    "meshery/meshery",
-   17
+   12
   ],
   [
    "keploy/keploy",

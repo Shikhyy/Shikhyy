@@ -72,14 +72,6 @@
   "date": "2026-11-23"
  },
  {
-  "owner": "jaegertracing",
-  "repo": "jaeger",
-  "title": "test(elasticsearch): cover monthly and yearly periodic index layouts",
-  "url": "https://github.com/jaegertracing/jaeger/pull/10262",
-  "state": "open",
-  "date": "2026-11-23"
- },
- {
   "owner": "blowhorn-ai",
   "repo": "blowhorn-site",
   "title": "ci(security): pin remaining floating action tags to commit SHAs",

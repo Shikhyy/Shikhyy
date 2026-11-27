@@ -25,7 +25,7 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 - **Write the invariant down, then test it.** Enfeoff states six rules and the on-chain program checks every one of them on every spend.
 - **Ship something you can click.** Many of the projects below have a live demo you can try.
 
-**This week:** <!--AUTO:this_week:start-->129 commits across 10 repositories and 27 pull requests, mostly in **bell** (53), **Joltide** (24) and **Saans** (23).<!--AUTO:this_week:end-->
+**This week:** <!--AUTO:this_week:start-->121 commits across 10 repositories and 24 pull requests, mostly in **bell** (53), **Joltide** (24) and **Saans** (22).<!--AUTO:this_week:end-->
 
 | | |
 | :-- | :-- |
@@ -35,8 +35,8 @@ In the last year that has meant <!--AUTO:about_numbers:start-->over 3,500 commit
 | **Open source** | <!--AUTO:oss_row:start-->26 merged pull requests across Meshery, Blowhorn, keploy, Kestra, x402 and Hermes Agent<!--AUTO:oss_row:end--> |
 
 <!--AUTO:spotlight:start-->
-> **Project spotlight, changes daily:** [Enfeoff](https://github.com/Shikhyy/enfeoff)
-> A prompt-injected "send everything to the attacker" fails with `RecipientNotAllowed`, because the recipient check runs before the budget check.
+> **Project spotlight, changes daily:** [ResilientPay](https://github.com/Shikhyy/ResilientPay)
+> A whole payment fits in a 106-byte envelope, which is why sending it over SMS takes two segments instead of four.
 
 <!--AUTO:spotlight:end-->
 
@@ -177,11 +177,6 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
       <sub>4 merged</sub>
     </td>
     <td align="center" width="16%">
-      <a href="https://github.com/jaegertracing/jaeger/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/jaegertracing.png?size=160" width="56" height="56" alt="jaegertracing"></a><br>
-      <b>jaegertracing</b><br>
-      <sub>1 open</sub>
-    </td>
-    <td align="center" width="16%">
       <a href="https://github.com/keploy/keploy/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/keploy.png?size=160" width="56" height="56" alt="keploy"></a><br>
       <b>keploy</b><br>
       <sub>4 merged, 5 open</sub>
@@ -190,6 +185,11 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
       <a href="https://github.com/x402-foundation/x402/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/x402-foundation.png?size=160" width="56" height="56" alt="x402"></a><br>
       <b>x402</b><br>
       <sub>2 merged, 2 open</sub>
+    </td>
+    <td align="center" width="16%">
+      <a href="https://github.com/NousResearch/hermes-agent/pulls?q=is%3Apr+author%3AShikhyy"><img src="https://github.com/NousResearch.png?size=160" width="56" height="56" alt="Hermes Agent"></a><br>
+      <b>Hermes Agent</b><br>
+      <sub>1 merged, 3 open</sub>
     </td>
   </tr>
 </table>
@@ -218,7 +218,7 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 - **Merged** Nov 24: [ci(site): guard the Enlist control and a Coming soon split on the home page](https://github.com/blowhorn-ai/blowhorn-site/pull/737) (Blowhorn)
 
 <details>
-<summary>All pull requests by project (44)</summary>
+<summary>All pull requests by project (43)</summary>
 <br>
 
 **karmada-io**
@@ -249,9 +249,6 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 - [ci(site): guard the Enlist control and a Coming soon split on the home page](https://github.com/blowhorn-ai/blowhorn-site/pull/737) (blowhorn-site, merged Nov 24)
 - [ci(security): pin remaining floating action tags to commit SHAs](https://github.com/blowhorn-ai/blowhorn-site/pull/624) (blowhorn-site, merged Nov 23)
 - [fix(verdict): treat timezone aliases as the same zone](https://github.com/blowhorn-ai/tells/pull/87) (tells, merged Nov 19)
-
-**jaegertracing**
-- [test(elasticsearch): cover monthly and yearly periodic index layouts](https://github.com/jaegertracing/jaeger/pull/10262) (open since Nov 23)
 
 **keploy**
 - [fix(templates): find an encoded placeholder after text of another width](https://github.com/keploy/keploy/pull/5390) (keploy, open since Nov 22)
@@ -363,5 +360,5 @@ Also on the profile: [Apex](https://github.com/Shikhyy/Apex), a four-agent DeFi 
 <br>
 
 <p align="center">
-  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-26 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
+  <sub>The numbers, open source activity, recent repositories, language chart and contribution graphics refresh automatically every six hours through a GitHub Action running <code>scripts/update.py</code>. <!--AUTO:updated:start-->Last updated 2026-11-27 UTC<!--AUTO:updated:end--> All repositories are on the <a href="https://github.com/Shikhyy?tab=repositories">repositories tab</a>.</sub>
 </p>
