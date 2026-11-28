@@ -1,27 +1,27 @@
 {
- "commits": 121,
- "prs": 24,
- "repos": 10,
+ "commits": 88,
+ "prs": 18,
+ "repos": 8,
  "top": [
   [
    "Shikhyy/bell",
    53
   ],
   [
-   "Shikhyy/Joltide",
-   24
-  ],
-  [
    "Shikhyy/Saans",
-   22
+   21
   ],
   [
    "meshery/meshery",
-   12
+   4
   ],
   [
    "keploy/keploy",
    4
+  ],
+  [
+   "Shikhyy/Joltide",
+   3
   ]
  ]
 }
